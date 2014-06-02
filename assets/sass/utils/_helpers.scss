@@ -168,9 +168,7 @@
 
 .figure--left {
 	float: left;
-	margin: 0 1em .5em 0; 
-	width: -webkit-min-content;
-	width: -moz-min-content;
+	margin: 0 1em .5em 0;
 	width: min-content;
 
 	img {
@@ -183,8 +181,6 @@
 .figure--right {
 	float: right;
 	margin: 0 0 .5em 1em;
-	width: -webkit-min-content;
-	width: -moz-min-content;
 	width: min-content; 
 
 	img {

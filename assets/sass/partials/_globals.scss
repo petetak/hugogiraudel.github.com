@@ -11,7 +11,7 @@
 *,
 *:before, 
 *:after { /* 1 */
-	@include prefix((box-sizing: border-box), webkit moz); /* 2 */
+	box-sizing: border-box; /* 2 */
 	padding: 0; /* 3 */
 	margin: 0; /* 3 */
 }

@@ -4,8 +4,8 @@
 .avatar {
 	$size: 6em;
 	
-    @include size($size);
-    @include absolute(top 0 right (-$size / 2));
+  @include size($size);
+  @include absolute(top 0 right (-$size / 2));
 	border-radius: 50%;
 	overflow: hidden;
 

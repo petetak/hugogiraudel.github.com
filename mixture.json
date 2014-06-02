@@ -1,5 +1,13 @@
 {
-  "autoPrefixer": null,
+  "autoPrefixer": {
+    "active": true,
+    "sourceMap": false,
+    "browsers": [
+      "last 1 version",
+      "> 1%",
+      "ie 8"
+    ]
+  },
   "convertHtmlDefault": "index",
   "convertHtmlExtension": "",
   "convertHtmlIgnore": "/article/, /post",
