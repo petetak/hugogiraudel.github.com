@@ -1,0 +1,63 @@
+/* ------- *
+ * $HEADER *
+ * ------- */
+
+/**
+ * Header element
+ */
+.header {
+	@extend %clearfix;
+	border-bottom: 3px solid #D1D1D1;
+	margin: 2.5em 0 2em;
+	position: relative;
+  	width: 85%;
+  
+  @include breakpoint(medium) {
+    width: 100%;
+  }
+
+	@include breakpoint(small) {
+		margin-top: 1em;
+	}
+}
+
+/**
+ * Site main title
+ */
+.site-title {
+  @include rem(4);
+	float: left;
+	font-family: 'Orienta', sans-serif;
+	margin: 0;
+	text-shadow: none;
+	text-transform: none;
+	font-weight: bold;
+	padding: .25em 0 .25em 0;
+
+	@include breakpoint(small) {
+		@include rem(2.8);
+		float: none;
+		text-align: center;
+	}
+
+	@include breakpoint(medium) {
+		padding: .1em 0 0 0;
+	}
+	
+	a {
+		color: $mediumgrey;
+
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+	}
+	
+	span {
+		text-transform: uppercase;
+		color: $lightgrey;
+	}
+
+	&:hover span {
+		color: $main-color;
+	}
+}

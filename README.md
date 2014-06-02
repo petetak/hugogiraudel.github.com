@@ -1,5 +1,5 @@
 # HugoGiraudel.com
 
-I write about Sass. Mostly.
+Here lay the compiled source from [my site](http://hugogiraudel.com) running on Mixture.
 
-Auto commited via [Mixture](http://mixture.io)
+If you find any bug or want to make a suggestion, please open an issue on the [bug tracker](https://github.com/HugoGiraudel/hugogiraudel.github.com/issues).

@@ -1,0 +1,19 @@
+{% layout "default" %}
+
+{% block title %}HugoGiraudel.com{% endblock %}
+
+{% block content %} 
+	{% collection "article" by 7 order desc %}
+		{% if collection.current_page > collection.pages and collection.size > 0 %}
+			{% include "articles/paged-too-far" %}
+		{% elseif collection.size == 0 %}
+			{% include "articles/no-articles" %}
+		{% else %}
+		<ul class="list-articles">
+			{% assign currentpage = collection.current_page %}
+			{% include "articles/article" with collection.items %}
+		</ul>
+		{% include "articles/paging" %}
+		{% endif %}
+	{% endcollection %}
+{% endblock %}

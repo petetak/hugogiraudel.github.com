@@ -1,0 +1,21 @@
+/**
+ * Avatar
+ */
+.avatar {
+	$size: 6em;
+	
+    @include size($size);
+    @include absolute(top 0 right (-$size / 2));
+	border-radius: 50%;
+	overflow: hidden;
+
+	@include breakpoint(medium) {
+		display: none;
+	}
+
+	@include breakpoint(small) {
+		position: static;
+		margin: 1em auto 2em;
+		display: block;
+	}
+}

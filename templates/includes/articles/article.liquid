@@ -1,0 +1,27 @@
+{% capture _slug %}{% assign crap = article.slug | truncate: 20, '' %}{{ article.slug | remove: crap }}{% endcapture %}
+
+{% unless article.preview == true %}
+<li role="article">
+
+    {% if article.guest %}
+    	<span class="fontawesome-user  list-articles__icon" title="{{ article.guest }}"></span>
+    {% elsif article.external %}
+    	<span class="fontawesome-share-alt  list-articles__icon"></span>
+    {% endif %}
+
+{% capture extra_ %}{% if article.guest %} by {{ article.guest }}{% endif %}{% if article.external %} at {{ article.external.host }}{% endif %}{% endcapture %}
+  	
+    <p class="list-articles__date">{{ article.date | date: "%B %d, %Y" }}{{ extra_ }}</p>
+
+    <h2 class="list-articles__title">
+      	{% if article.external %}
+      		<a href="{{ article.external.url }}">
+      	{% else %}
+      		<a href="{{ article.date | date: '%Y' }}/{{ article.date | date: '%m' }}/{{ article.date | date:'%d' }}/{{ _slug }}">
+      	{% endif %}
+  	  			{{ article.title }}
+  	 		</a>
+  	</h2>
+
+</li>
+{% endunless %}

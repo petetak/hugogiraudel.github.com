@@ -1,0 +1,25 @@
+{% layout "default" %}
+
+{% block vars %}
+	{% collection "article" by 1 query "slug=/article/{{ mixture.route.year }}-{{ mixture.route.month }}-{{ mixture.route.day }}-{{ mixture.route.url }}" %}
+		{% assign post = collection.items.first %}
+	{% endcollection %}
+{% endblock %}
+
+{% block content %}
+	{% if post.title %} 
+		<h1>{{ post.title }}</h1> 
+	{% endif %}
+
+	{% if post.date %}
+		<p class="date">{{ post.date | date: "%B %d, %Y" }}
+		{% if post.guest %} &mdash; by {{ post.guest }}{% endif %}
+		</p> 
+	{% endif %}
+	
+	{{ post.body }}
+
+	{% if post.comments %}
+		<div id="disqus_thread"></div> 
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% layout "none" %}
+{% contenttype "application/xml" %}
+<rss version="2.0">
+	<channel>
+		<title>{{ global.title }}</title>
+		<link>{{ global.domain }}</link>
+		<description>{{ global.intro }}</description>
+		<language>en</language>
+		<copyright>{{ 'now' | date: "%Y" }}</copyright>
+		{% collection "article" by 10 order desc %}
+			{% include "articles/rss-item" with collection.items %}
+		{% endcollection %}
+	</channel>
+</rss>

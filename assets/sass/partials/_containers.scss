@@ -1,0 +1,62 @@
+/* ----------- *
+ * $CONTAINERs *
+ * ----------- */
+ 
+$sidebar-width: 30%;
+$margin-width: 5%;
+
+/**
+ * Main wrapper
+ * Contains .header, .main, .sidebar, .footer
+ * 1. Equals 1140px
+ */
+.wrapper {
+	width: 100%;
+	max-width: 57em; /* 1 */
+	margin:  0 auto;
+	padding: 0 1em;
+
+	@include breakpoint(small) {
+		padding: 0 .5em;
+	}
+}
+
+/**
+ * Main content
+ */
+.main {
+	@extend %content;
+	width: (100% - $sidebar-width - $margin-width);
+	margin-right: 2%;
+	float: left;
+
+	@include breakpoint(medium) { 
+		margin-right: 0;
+		border-bottom: 3px solid #D1D1D1;
+	}
+}
+
+/**
+ * Sidebar
+ * Contains informations about me + CarbonAds
+ */
+.sidebar {
+	@extend %content;
+	width: $sidebar-width;
+	margin-top: 2em;
+	position: relative;
+	z-index: 2;
+	float: right;
+}
+
+/**
+ * Shared by .main and .sidebar
+ */
+%content { 
+	padding-bottom: 2em;
+
+	@include breakpoint(medium) {
+		float: none;
+		width: 100%;
+	}
+}

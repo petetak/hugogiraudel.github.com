@@ -1,0 +1,35 @@
+{% layout "default" %}
+
+{% block title %}Archives - Hugo Giraudel{% endblock %}
+  
+{% block content %} 
+  <article>
+    <h1>Archives</h1>
+    <p>Good luck finding your way here...</p>
+
+    {% archive "article" %}
+      {% for item in archive.items %}
+        <h2>{{ item.year }}</h2>
+        
+        <ul>
+          {% for post in item.children %}
+                    
+{% capture _slug %}{% assign crap = post.slug | truncate: 20, '' %}{{ post.slug | remove: crap }}{% endcapture %}
+
+            <li>
+              {% if post.external %}
+                <a href="{{ post.external.url }}">
+              {% else %}
+                <a href="{{ post.date | date: '%Y' }}/{{ post.date | date: '%m' }}/{{ post.date | date:'%d' }}/{{ _slug }}">
+              {% endif %}
+                  {{ post.title }}
+                </a>
+            </li>
+
+          {% endfor %}
+        </ul>
+
+      {% endfor %}
+  {% endarchive %}
+  </article>
+{% endblock %}

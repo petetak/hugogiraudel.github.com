@@ -1,0 +1,30 @@
+<ul class="pagination">
+	{% if collection.previous %}
+		{% capture prev %}{{ collection.current_page | minus:1 }}{% endcapture %}
+		{% if prev == "1" %}
+			<li>
+				<a href="/">
+					<span class="fontawesome-angle-left icon-left icon-right"></span> Previous
+				</a>
+			</li>
+		{% else %}
+			<li>
+				<a href="/page{{ prev }}">
+					<span class="fontawesome-angle-left icon-left icon-right"></span> Previous
+				</a>
+			</li>
+		{% endif %}
+	{% endif %}
+
+	{% comment %}
+	<li><a href="/archive" class="archive-link">Browse archives</a></li>
+	{% endcomment %}
+
+	{% comment %}
+	<span>Showing items {{ collection.current_offset | plus: 1 }}-{% if collection.next %}{{ collection.current_offset | plus: collection.page_size }}{% else %}{{ collection.size }}{% endif %} of {{ collection.size }}</span>
+	{% endcomment %}
+
+	{% if collection.next %}
+		<li><a href="/page{{ collection.current_page | plus:1 }}">Next <span class="fontawesome-angle-right icon-left icon-right"></span></a></li>
+	{% endif %}
+</ul>

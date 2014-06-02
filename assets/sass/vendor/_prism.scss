@@ -1,0 +1,136 @@
+/* -------------------- *
+ * $SYNTAX HIGHLIGHTING *
+ * -------------------- */
+
+/**
+ * Syntax highlighting
+ * 1. Make the content within the code block horizontally scrollable
+ * 2. Keep white spaces as authored
+ * 3. Ensure tab size consistency
+ * 4. Disable word hyphenation within code blocks
+ * 5. Reduce font size on small screens
+ */
+pre {
+	margin-bottom: $space;
+	padding: .6em;
+	overflow-x: auto;       /* 1 */
+
+	background: #272822;
+	border-radius: .2em;
+
+	color: #f8f8f2;
+	line-height: 1.2;
+	text-shadow: 0 1px rgba(0,0,0,0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	white-space: pre;       /* 2 */
+
+	@include prefix((tab-size: 4), moz o); /* 3 */
+  @include prefix((hyphens: none), webkit moz ms o);
+
+	@include breakpoint(small) {
+		@include rem(1.5);  /* 5 */
+	}
+}
+
+:not(pre) > code {
+	background: #f5f2f0;
+	border: 1px solid #eee;
+	padding: .05em .1em;
+	border-radius: .2em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number{
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.builtin {
+	color: #a6e22e;
+}
+
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value {
+	color: #e6db74;
+}
+
+.token.keyword{
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.command,
+.token.important {
+	font-weight: bold;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.variable {
+	color: #f92672; // Monokawaii
+}
+
+.token.string,
+.token.newline {
+  color: green;
+}
+
+.token.coord {
+  color: darkcyan;
+}
+
+.token.oldline {
+  color: red;
+}
+
+.token.commit_sha1 {
+  color: orange;
+}
+
+.token.command .prompt {
+  color: deepskyblue;
+}
+
+.token.command .prompt_end {
+  color: hotpink;
+}
