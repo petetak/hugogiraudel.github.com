@@ -1,5 +1,5 @@
 (function (global) {
-  
+
   var App = function (conf) {
     this.conf = global.extend({
       codepen: false,
@@ -26,25 +26,11 @@
       });
     }
 
-    if (this.conf.tracking === true) {
-      this.tracking();
-    }
-
-    if (this.conf.ad === true) {
-      this.ad();
-    }
-
-    if (this.conf.comments === true) {
-      this.comments();
-    }
-
-    if (this.conf.codepen === true) {
-      this.codepen();
-    }
-
-    if (this.conf.sassmeister === true) {
-      this.sassmeister();
-    }
+    ['tracking', 'ad', 'comments', 'codepen', 'sassmeister'].forEach(function (key) {
+      if (this.conf[key] === true) {
+        this[key]();
+      }
+    }.bind(this));
   };
 
   App.prototype.tracking = function () {
@@ -57,15 +43,15 @@
   };
 
   App.prototype.ad = function () {
-    this._inject("http://engine.carbonads.com/z/24598/azcarbon_2_1_0_HORIZ");
+    this._inject("//engine.carbonads.com/z/24598/azcarbon_2_1_0_HORIZ");
   };
 
   App.prototype.comments = function () {
     global.disqus_shortname = this.conf.disqus.name;
     global.disqus_url = this.conf.disqus.url;
-    global.disqus_title = this.conf.disqusTitle;
+    global.disqus_title = this.conf.disqus.title;
 
-    this._inject("http://" + disqus_shortname + ".disqus.com/embed.js");
+    this._inject("//" + disqus_shortname + ".disqus.com/embed.js");
   };
 
   App.prototype.codepen = function () {
@@ -73,7 +59,7 @@
   };
 
   App.prototype.sassmeister = function () {
-    this._inject("http://static.sassmeister.com/js/embed.js");
+    this._inject("//static.sassmeister.com/js/embed.js");
   };
 
   App.prototype._inject = function (url) {

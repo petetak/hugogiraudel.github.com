@@ -1,74 +1,75 @@
 {
-  "autoPrefixer": {
-    "active": true,
-    "sourceMap": false,
-    "browsers": [
-      "last 1 version",
-      "> 1%",
-      "ie 8"
-    ]
-  },
-  "convertHtmlDefault": "index",
-  "convertHtmlExtension": "",
-  "convertHtmlIgnore": "/article/, /post",
-  "convertHtmlOutput": null,
-  "customRuby": false,
-  "customRubyPath": null,
-  "customTodos": null,
-  "debug": false,
-  "domain": null,
-  "followLeader": true,
-  "ftpSettings": null,
-  "gitHubPages": {
-    "branch": "master",
-    "guid": "428B0C4F-3014-41AA-8B0F-362317C1CD45",
-    "repoUrl": "https://github.com/HugoGiraudel/hugogiraudel.github.com.git"
-  },
-  "ignoreDir": "ignore",
-  "less": null,
-  "lintScripts": true,
-  "modelSource": null,
-  "optimiseImages": true,
-  "optimiseSVG": true,
-  "password": null,
-  "preprocessorLocations": "assets",
-  "preprocessorScriptOutput": "assets/js",
-  "preprocessorStyleOutput": "assets/css",
-  "projectDescription": "I write about Sass. Mostly.",
-  "projectName": "HugoGiraudel.com",
-  "publishedId": null,
-  "remoteDebugPort": 8080,
-  "routes": [
-    {
-      "redirect": null,
-      "route": ":year/:month/:day/:url",
-      "template": "post"
+    "debug": false,
+    "lintScripts": true,
+    "preprocessorLocations": "assets",
+    "preprocessorScriptOutput": "assets/js",
+    "preprocessorStyleOutput": "assets/css",
+    "projectName": "HugoGiraudel.com",
+    "projectDescription": "I write about Sass. Mostly.",
+    "publishedId": null,
+    "serverHostname": null,
+    "serverPort": null,
+    "templateDirectory": "templates",
+    "templateDefaultLayout": "layout",
+    "templateDefaultPage": "index",
+    "type": "mixture",
+    "useCompass": false,
+    "simpleModePartnerServer": null,
+    "simpleModeFileTypes": null,
+    "modelSource": null,
+    "domain": null,
+    "convertHtmlOutput": null,
+    "convertHtmlDefault": "index",
+    "convertHtmlIgnore": "/article/, /post",
+    "convertHtmlExtension": "",
+    "followLeader": true,
+    "routes": [
+        {
+            "route": ":year/:month/:day/:url",
+            "template": "post",
+            "redirect": null
+        },
+        {
+            "route": "page:page",
+            "template": "index",
+            "redirect": null
+        },
+        {
+            "route": "tag/:tag",
+            "template": "index",
+            "redirect": null
+        },
+        {
+            "route": "feeds/feed.xml",
+            "template": "rss",
+            "redirect": null
+        }
+    ],
+    "customRuby": false,
+    "customRubyPath": null,
+    "remoteDebugPort": 8080,
+    "optimiseImages": true,
+    "password": null,
+    "ignoreDir": "ignore",
+    "customTodos": null,
+    "ftpSettings": null,
+    "autoPrefixer": {
+        "active": true,
+        "browsers": [
+            "last 1 version",
+            "> 1%",
+            "ie 8"
+        ],
+        "sourceMap": false
     },
-    {
-      "redirect": null,
-      "route": "page:page",
-      "template": "index"
+    "sass": null,
+    "sitemap": false,
+    "gitHubPages": {
+        "repoUrl": "https://github.com/HugoGiraudel/hugogiraudel.github.com.git",
+        "guid": "2877f371-33a8-4906-b04b-ceb4c723ef7c",
+        "branch": "master"
     },
-    {
-      "redirect": null,
-      "route": "tag/:tag",
-      "template": "index"
-    },
-    {
-      "redirect": null,
-      "route": "feeds/feed.xml",
-      "template": "rss"
-    }
-  ],
-  "sass": null,
-  "serverHostname": null,
-  "serverPort": null,
-  "simpleModeFileTypes": null,
-  "simpleModePartnerServer": null,
-  "sitemap": false,
-  "templateDefaultLayout": "layout",
-  "templateDefaultPage": "index",
-  "templateDirectory": "templates",
-  "type": "mixture",
-  "useCompass": false
+    "less": null,
+    "optimiseSVG": true,
+    "reload": 0
 }
