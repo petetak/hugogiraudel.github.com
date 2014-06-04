@@ -10,7 +10,7 @@
   },
   "convertHtmlDefault": "index",
   "convertHtmlExtension": "",
-  "convertHtmlIgnore": "/article/, /post",
+  "convertHtmlIgnore": "/article/, /post, /collections",
   "convertHtmlOutput": null,
   "customRuby": false,
   "customRubyPath": null,
