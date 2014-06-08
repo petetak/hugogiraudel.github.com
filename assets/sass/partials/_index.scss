@@ -27,12 +27,12 @@
 		}
 
 		&:first-of-type { 
-      border-top: none; /* 1 */
-    } 
+      		border-top: none; /* 1 */
+    	} 
 
 		&:last-of-type { 
-      box-shadow: 0 1px #F2F2F2; /* 2 */ 
-    }
+      		box-shadow: 0 1px #F2F2F2; /* 2 */ 
+    	}
 	}
 
 	a {
@@ -49,7 +49,7 @@
  * Article titles in the list
  */
 .list-articles__title {
-  @include rem(2.8);
+    @include rem(2.8);
 	margin: 0;
 	padding: .25em 3.25em .25em 0;
 	

@@ -17,7 +17,7 @@
       	{% if article.external %}
       		<a href="{{ article.external.url }}">
       	{% else %}
-      		<a href="{{ article.date | date: '%Y' }}/{{ article.date | date: '%m' }}/{{ article.date | date:'%d' }}/{{ _slug }}">
+      		<a href="/{{ article.date | date: '%Y' }}/{{ article.date | date: '%m' }}/{{ article.date | date:'%d' }}/{{ _slug }}">
       	{% endif %}
   	  			{{ article.title }}
   	 		</a>

@@ -8,10 +8,6 @@
     ],
     "sourceMap": false
   },
-  "convertHtmlDefault": "index",
-  "convertHtmlExtension": "",
-  "convertHtmlIgnore": "/article/, /post, /collections",
-  "convertHtmlOutput": null,
   "customRuby": false,
   "customRubyPath": null,
   "customTodos": null,
@@ -19,11 +15,6 @@
   "domain": null,
   "followLeader": true,
   "ftpSettings": null,
-  "gitHubPages": {
-    "branch": "master",
-    "guid": "549C20D5-F6E6-4BBB-B4D7-B02417583677",
-    "repoUrl": "https://github.com/HugoGiraudel/hugogiraudel.github.com.git"
-  },
   "ignoreDir": "ignore",
   "less": null,
   "lintScripts": true,
@@ -71,5 +62,12 @@
   "templateDefaultPage": "index",
   "templateDirectory": "templates",
   "type": "mixture",
-  "useCompass": false
+  "useCompass": false,
+  "convertHtml": {
+    "extension": ".html",
+    "path": null,
+    "ignoreUrls": "/article/, /post, /collections",
+    "relativePaths": false,
+    "default": "index"
+  }
 }
