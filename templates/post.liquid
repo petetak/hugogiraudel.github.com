@@ -16,6 +16,10 @@
 		{% if post.guest %} &mdash; by {{ post.guest }}{% endif %}
 		</p> 
 	{% endif %}
+
+	{% if post.external %}
+		<p>The post is not hosted on {{ global.domain }}. Please go to : <a href="{{ post.external.url }}">{{ post.external.host }}</a>.</p>
+	{% endif %}
 	
 	{{ post.body }}
 

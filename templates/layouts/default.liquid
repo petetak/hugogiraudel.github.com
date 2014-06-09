@@ -3,10 +3,17 @@
 <head>
 {% block vars %}{% endblock %}
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Hugo Giraudel"> 
+
+{% if post.external %}
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="0;url={{ post.external.url }}" />
+{% else %}
 <meta name="robots" content="index,follow"> 
 <meta name="revisit-after" content="1 days"> 
+{% endif %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Hugo Giraudel"> 
 <meta name="description" content="{{ global.description }}">
 
 <link rel="dns-prefetch" href="//www.google-analytics.com">
