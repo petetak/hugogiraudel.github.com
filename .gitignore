@@ -6,3 +6,4 @@
 *.out
 collections/.cache
 converted-html
+.githubsettings
