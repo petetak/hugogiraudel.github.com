@@ -4,12 +4,12 @@
 
 /**
  * RESET ALL THE THINGS! (barbarian style)
- * 1. Include pseudo-elements which are not target by * 
+ * 1. Include pseudo-elements which are not target by *
  * 2. Apply proper box-sizing to all elements
  * 3. Barbarian reset
  */
 *,
-*:before, 
+*:before,
 *:after { /* 1 */
 	box-sizing: border-box; /* 2 */
 	padding: 0; /* 3 */
@@ -25,8 +25,8 @@ html {
 	color: #555;
 	text-shadow: 0 1px rgba(255,255,255,.6);
 	border-left: 6px solid $main-color;
-	
-	@include breakpoint(small) { 
+
+	@include breakpoint(small) {
 		border-left: none;
 		border-top: 5px solid $main-color;
 	}
@@ -37,7 +37,7 @@ html {
  * 1. 20px, used as a baseline for EM unit
  */
 body {
-	@include rem(2); /* 1 */ 
+	@include rem(2); /* 1 */
 }
 
 /**
@@ -46,7 +46,7 @@ body {
 a {
 	color: $main-color;
 	text-decoration: none;
-	
+
 	&:hover, &:focus {
 		text-decoration: underline;
 	}
@@ -55,13 +55,13 @@ a {
 /**
  * User selection
  */
-::-moz-selection { 
-	background: $main-color; 
+::-moz-selection {
+	background: $main-color;
 	color: white;
 }
 
-::selection      { 
-	background: $main-color; 
+::selection      {
+	background: $main-color;
 	color: white;
 }
 
@@ -78,4 +78,10 @@ a {
 	color: #999;
 	font-style: italic;
 	@include relative(top -.5em);
+}
+
+.date {
+	color: #999;
+	text-transform: uppercase;
+	margin-top: .5em
 }
