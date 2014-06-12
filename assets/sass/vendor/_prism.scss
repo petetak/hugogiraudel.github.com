@@ -24,7 +24,7 @@ pre {
 	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 	white-space: pre;       /* 2 */
 
-	tab-size: 4; /* 3 */
+	tab-size: 2; /* 3 */
   hyphens: none;
 
 	@include breakpoint(small) {

@@ -79,3 +79,8 @@ a {
 	font-style: italic;
 	@include relative(top -.5em);
 }
+
+.date {
+  color: #666;
+  text-transform: uppercase;
+}

@@ -584,8 +584,8 @@ pre {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   white-space: pre;
   /* 2 */
-  -moz-tab-size: 4;
-  tab-size: 4;
+  -moz-tab-size: 2;
+  tab-size: 2;
   /* 3 */
   -webkit-hyphens: none;
   -moz-hyphens: none;
@@ -757,6 +757,10 @@ a {
   font-style: italic;
   top: -0.5em;
   position: relative; }
+
+.date {
+  color: #666;
+  text-transform: uppercase; }
 
 /**
  * Avatar
@@ -1217,5 +1221,4 @@ th {
  */
 #azcarbon > img {
   display: inline !important; }
-
 
