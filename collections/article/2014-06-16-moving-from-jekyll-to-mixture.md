@@ -6,7 +6,7 @@ external:
   host: Mixture
   url: http://mixture.io/blog/jekyll-mixture/
 layout: none
-preview: true
+preview: false
 published: true
 sassmeister: false
 summary: false
