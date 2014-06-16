@@ -684,7 +684,7 @@ pre {
  * -------- */
 /**
  * RESET ALL THE THINGS! (barbarian style)
- * 1. Include pseudo-elements which are not target by * 
+ * 1. Include pseudo-elements which are not target by *
  * 2. Apply proper box-sizing to all elements
  * 3. Barbarian reset
  */
@@ -759,8 +759,9 @@ a {
   position: relative; }
 
 .date {
-  color: #666;
-  text-transform: uppercase; }
+  color: #999;
+  text-transform: uppercase;
+  margin-top: 0.5em; }
 
 /**
  * Avatar
@@ -1221,5 +1222,4 @@ th {
  */
 #azcarbon > img {
   display: inline !important; }
-
 
