@@ -1,9 +1,14 @@
 ---
+codepen: false
 comments: false
 date: 2014-06-22
+disqus: false
+guest: false
 layout: post
 preview: true
 published: true
+sassmeister: false
+summary: false
 title: "Bitwise operators in Sass"
 ---
 

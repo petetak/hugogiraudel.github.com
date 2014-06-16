@@ -2,7 +2,10 @@
 comments: true
 date: 2013-11-06
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "How I learnt to like Bootstrap"
 ---
 

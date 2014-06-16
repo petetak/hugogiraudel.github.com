@@ -3,7 +3,10 @@ codepen: true
 comments: true
 date: 2013-12-12
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Introducing Countdown.js"
 ---
 

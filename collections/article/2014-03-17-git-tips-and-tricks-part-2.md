@@ -4,7 +4,10 @@ comments: true
 guest: "Loïc Giraudel"
 layout: post
 prism: true
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Git tips and tricks - Part 2"
 ---
 

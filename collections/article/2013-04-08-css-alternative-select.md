@@ -2,7 +2,9 @@
 comments: true
 date: 2013-04-08
 layout: post
+preview: false
 published: true
+sassmeister: false
 summary: true
 title: "Why a CSS alternative to &lt;select&gt; is impossible"
 ---

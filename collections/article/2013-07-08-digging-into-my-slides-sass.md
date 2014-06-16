@@ -1,9 +1,11 @@
 ---
-date: 2013-07-08
 codepen: true
 comments: true
+date: 2013-07-08
 layout: post
+preview: false
 published: true
+sassmeister: false
 summary: true
 title: "Digging into my slides about Sass"
 ---

@@ -3,7 +3,10 @@ comments: true
 date: 2012-11-15
 disqus: http://hugogiraudel.com/blog/one-week-first-changes.html
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "One week, first changes"
 ---
 

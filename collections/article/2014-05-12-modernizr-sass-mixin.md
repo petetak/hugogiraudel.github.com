@@ -3,7 +3,10 @@ comments: true
 guest: Daniel Guillan
 date: 2014-05-12
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Modernizr Sass mixin"
 ---
 

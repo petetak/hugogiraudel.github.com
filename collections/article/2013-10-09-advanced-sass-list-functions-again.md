@@ -2,7 +2,10 @@
 comments: true
 date: 2013-10-09
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Advanced Sass list functions, again"
 ---
 

@@ -1,6 +1,5 @@
 {% capture _slug %}{% assign crap = rss-item.slug | truncate: 20, '' %}/{{ rss-item.date | date: '%Y' }}/{{ rss-item.date | date: '%m' }}/{{ rss-item.date | date:'%d' }}/{{ rss-item.slug | remove: crap }}{% endcapture %}
 
-{% unless rss-item.preview == true %}
 <item>
 	<title>{{ rss-item.title | html_encode }}</title>
 	{% if rss-item.external %}
@@ -16,4 +15,3 @@
 	<pubDate>{{ rss-item.date | date:'%a, %d %b %Y %H:%M:%S GMT'}}</pubDate>
 	<description>{{ rss-item.body | html_encode }}</description>
 </item>
-{% endunless %}

@@ -1,9 +1,14 @@
 ---
+codepen: false
 comments: false
+disqus: false
 date: 2014-06-16
+guest: false
 layout: post
 preview: true
 published: true
+sassmeister: false
+summary: false
 title: "Template engines and JavaScript"
 ---
 

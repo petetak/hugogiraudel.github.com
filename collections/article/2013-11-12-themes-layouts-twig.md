@@ -2,7 +2,10 @@
 comments: true
 date: 2013-11-12
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Dealing with themes and layouts with Twig"
 ---
 

@@ -3,7 +3,10 @@ comments: true
 date: 2013-10-28
 guest: "Christoph Rumpel"
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Your work is not good enough"
 ---
 

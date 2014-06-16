@@ -2,7 +2,10 @@
 comments: true
 date: 2013-07-25
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Designing an image gallery"
 ---
 

@@ -7,7 +7,7 @@
 		<description>{{ global.intro }}</description>
 		<language>en</language>
 		<copyright>{{ 'now' | date: "%Y" }}</copyright>
-		{% collection "article" by 10 order desc %}
+		{% collection "article" by 10 query "preview=false" order desc %}
 			{% include "articles/rss-item" with collection.items %}
 		{% endcollection %}
 	</channel>

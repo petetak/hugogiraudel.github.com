@@ -2,7 +2,10 @@
 comments: true
 date: 2013-03-11
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Interview with Manoela Ilic"
 ---
 

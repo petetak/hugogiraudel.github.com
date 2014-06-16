@@ -2,8 +2,10 @@
 date: 2014-04-01
 comments: true
 layout: post
+preview: false
 published: true
 sassmeister: true
+summary: false
 title: "Pushing Sass placeholders further"
 ---
 

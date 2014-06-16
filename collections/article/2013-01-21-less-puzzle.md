@@ -3,7 +3,10 @@ comments: true
 date: 2013-01-21
 disqus: http://hugogiraudel.com/blog/less-puzzle
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "A little LESS puzzle"
 --- 
 Hi guys! What do you think of a little puzzle to wake up your neurons? I think I've found something tricky enough to worth a blog post and a little challenge about it.

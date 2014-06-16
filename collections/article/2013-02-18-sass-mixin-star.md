@@ -2,7 +2,9 @@
 comments: true
 date: 2013-02-18
 layout: post
+preview: false
 published: true
+sassmeister: false
 summary: true
 title: "Sass-ify a CSS shape"
 ---

@@ -2,8 +2,10 @@
 comments: true
 date: 2014-04-14
 layout: post
+preview: false
 published: true
 sassmeister: true
+summary: false
 title: "Building a walk function in Sass"
 ---
 

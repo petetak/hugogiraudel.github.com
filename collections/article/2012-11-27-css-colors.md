@@ -3,7 +3,10 @@ comments: true
 date: 2012-11-27
 disqus: http://hugogiraudel.com/blog/css-colors.html
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Colors in CSS"
 ---
 

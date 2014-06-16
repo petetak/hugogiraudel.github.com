@@ -3,7 +3,10 @@ comments: true
 date: 2013-02-11
 disqus: http://hugogiraudel.com/blog/sass-structure
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "A closer look at my Sass structure"
 ---
 

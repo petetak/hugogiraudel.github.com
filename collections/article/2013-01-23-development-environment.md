@@ -3,7 +3,10 @@ comments: true
 date: 2013-01-23
 disqus: http://hugogiraudel.com/blog/development-environment
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "My development environment"
 ---
 

@@ -3,7 +3,10 @@ comments: true
 date: 2012-11-20
 disqus: http://hugogiraudel.com/blog/css-challenge.html
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "A CSS challenge"
 ---
 

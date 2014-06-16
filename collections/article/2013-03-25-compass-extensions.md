@@ -2,7 +2,10 @@
 comments: true
 date: 2013-03-25
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "8 Compass features you may not know"
 ---
 

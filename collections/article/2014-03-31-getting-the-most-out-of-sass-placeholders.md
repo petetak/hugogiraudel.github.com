@@ -2,7 +2,10 @@
 date: 2014-03-31
 comments: true
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Getting the most out of Sass placeholders"
 ---
 

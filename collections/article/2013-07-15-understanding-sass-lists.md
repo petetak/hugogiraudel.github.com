@@ -2,7 +2,10 @@
 comments: true
 date: 2013-07-15
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Understanding Sass lists"
 ---
 

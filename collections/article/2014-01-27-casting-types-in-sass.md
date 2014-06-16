@@ -2,7 +2,10 @@
 comments: true
 date: 2014-01-27
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "SassyCast: type conversion in Sass"
 ---
 

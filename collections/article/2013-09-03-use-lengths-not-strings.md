@@ -2,7 +2,10 @@
 comments: true
 date: 2013-09-03
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Use lengths, not strings"
 ---
 

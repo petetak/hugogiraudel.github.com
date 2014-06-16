@@ -2,7 +2,10 @@
 date: 2014-03-18
 comments: true
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "SassySort: sorting algorithms in Sass"
 ---
 

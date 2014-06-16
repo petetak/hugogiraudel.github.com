@@ -3,8 +3,11 @@ date: 2014-03-10
 comments: true
 guest: "Loïc Giraudel"
 layout: post
-prisme: true
+prism: true
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Git tips and tricks - Part 1"
 ---
 

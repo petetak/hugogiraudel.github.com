@@ -3,7 +3,10 @@ codepen: true
 comments: true
 date: 2014-04-22
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Why Element Queries matter"
 ---
 At work, many of our pages present one or more collection of items, like products, shops, or whatever. It's basically a list of thumbnails, with a title and a location and/or a price. When you click on it, it leads you to the page related to the item. We call this the `elements` component (we could have called it `thumbs-list` or something but that doesn't matter).

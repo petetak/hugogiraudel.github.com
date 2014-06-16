@@ -2,7 +2,10 @@
 comments: true
 date: 2013-10-17
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Random function with Sass 3.3"
 ---
 

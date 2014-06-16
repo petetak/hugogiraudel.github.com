@@ -1,6 +1,5 @@
 {% capture _slug %}{% assign crap = article.slug | truncate: 20, '' %}{{ article.slug | remove: crap }}{% endcapture %}
 
-{% unless article.preview == true %}
 <li role="article">
 
     {% if article.guest %}
@@ -24,4 +23,3 @@
   	</h2>
 
 </li>
-{% endunless %}

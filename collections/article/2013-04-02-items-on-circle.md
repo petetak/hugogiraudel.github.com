@@ -3,7 +3,10 @@ codepen: true
 comments: true
 date: 2013-04-02
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Items on circle with CSS"
 ---
 

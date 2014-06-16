@@ -2,8 +2,10 @@
 comments: true
 date: 2014-05-19
 layout: post
+preview: false
 published: true
 sassmeister: true
+summary: false
 title: "A new Sass mixin for offsets"
 ---
 

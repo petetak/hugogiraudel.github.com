@@ -2,7 +2,10 @@
 comments: true
 date: 2014-01-13
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "String replacement function in Sass"
 ---
 

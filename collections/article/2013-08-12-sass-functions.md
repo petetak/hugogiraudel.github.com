@@ -2,7 +2,10 @@
 comments: true
 date: 2013-08-12
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "A couple of Sass functions"
 ---
 

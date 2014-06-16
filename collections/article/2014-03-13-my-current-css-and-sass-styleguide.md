@@ -4,6 +4,9 @@ external:
   host: SitePoint
   url: http://www.sitepoint.com/css-sass-styleguide/
 layout: none
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "My current CSS and Sass styleguide"
 ---

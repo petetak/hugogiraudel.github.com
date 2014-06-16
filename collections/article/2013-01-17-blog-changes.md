@@ -3,7 +3,10 @@ comments: true
 date: 2013-01-17
 disqus: http://hugogiraudel.com/blog/blog-changes
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Blog changes"
 ---
 

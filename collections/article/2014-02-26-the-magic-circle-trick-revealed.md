@@ -3,7 +3,10 @@ codepen: true
 comments: true
 date: 2014-02-26
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "The Magic Circle: trick revealed"
 ---
 

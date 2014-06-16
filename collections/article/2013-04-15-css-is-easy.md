@@ -1,9 +1,12 @@
 ---
 comments: true
-title: "\"CSS is easy\""
-layout: post
-published: true
 date: 2013-04-15
+layout: post
+preview: false
+published: true
+sassmeister: false
+summary: false
+title: "\"CSS is easy\""
 ---
 
 > [Véronique Bouvier](https://twitter.com/verobouvier) translated [this article in French](http://www.veronique-bouvier.com/css-cest-facile-par-hugo-giraudel/) on her blog.

@@ -3,8 +3,11 @@ comments: true
 date: 2013-07-29
 guest: "Loïc Giraudel"
 layout: post
+preview: false
 prism: true
 published: true
+sassmeister: false
+summary: false
 title: "Optimizing images with Bash script"
 ---
 

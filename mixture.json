@@ -8,11 +8,24 @@
     ],
     "sourceMap": false
   },
+  "convertHtml": {
+    "default": "index",
+    "extension": ".html",
+    "ignoreUrls": [
+      "/article/",
+      "/post",
+      "/collections"
+    ],
+    "path": null,
+    "relativePaths": false
+  },
   "debug": false,
   "lintScripts": true,
   "optimiseImages": true,
   "optimiseSVG": true,
-  "preprocessorLocations": "assets",
+  "preprocessorLocations": [
+    "assets"
+  ],
   "preprocessorScriptOutput": "assets/js",
   "preprocessorStyleOutput": "assets/css",
   "projectDescription": "I write about Sass. Mostly.",
@@ -31,11 +44,6 @@
     },
     {
       "redirect": null,
-      "route": "tag/:tag",
-      "template": "index"
-    },
-    {
-      "redirect": null,
       "route": "feeds/feed.xml",
       "template": "rss"
     }
@@ -44,12 +52,5 @@
   "templateDefaultLayout": "layout",
   "templateDefaultPage": "index",
   "templateDirectory": "templates",
-  "type": "mixture",
-  "convertHtml": {
-    "extension": ".html",
-    "path": null,
-    "ignoreUrls": "/article/, /post, /collections",
-    "relativePaths": false,
-    "default": "index"
-  }
+  "type": "mixture"
 }

@@ -2,7 +2,10 @@
 comments: true
 date: 2014-04-07
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "What to do with a Sass list?"
 ---
 

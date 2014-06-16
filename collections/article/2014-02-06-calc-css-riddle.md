@@ -2,7 +2,10 @@
 comments: true
 date: 2014-02-06
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "CSS trickery and calc function"
 ---
 <figure class="figure--right">

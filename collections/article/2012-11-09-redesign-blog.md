@@ -1,10 +1,13 @@
 ---
-title: "Hugogiraudel.com redesigned + new blog"
-layout: post
 comments: true
-published: true
-date: 2012-11-09 00:00
+date: 2012-11-09
 disqus: http://hugogiraudel.com/blog/redesign-blog
+layout: post
+preview: false
+published: true
+sassmeister: false
+summary: false
+title: "Hugogiraudel.com redesigned + new blog"
 ---
 
 

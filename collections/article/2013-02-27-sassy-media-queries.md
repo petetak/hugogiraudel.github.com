@@ -3,7 +3,10 @@ codepen: true
 comments: true
 date: 2013-02-27
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Sassy Media Queries"
 ---
 

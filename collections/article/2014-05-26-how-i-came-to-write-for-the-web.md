@@ -2,7 +2,10 @@
 comments: true
 date: 2014-05-26
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "How I came to write for the web"
 ---
 

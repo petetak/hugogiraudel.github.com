@@ -2,7 +2,10 @@
 comments: true
 date: 2014-06-02
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Feedback on another conf"
 ---
 

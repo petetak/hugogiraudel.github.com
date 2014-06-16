@@ -2,7 +2,10 @@
 comments: true
 date: 2013-07-22
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Chromebook review"
 ---
 

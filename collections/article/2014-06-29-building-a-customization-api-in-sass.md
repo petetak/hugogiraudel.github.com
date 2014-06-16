@@ -1,10 +1,14 @@
 ---
+codepen: false
 comments: false
 date: 2014-06-29
+disqus: false
 guest: "Ezekiel Gabrielse"
 layout: post
 preview: true
 published: true
+sassmeister: true
+summary: false
 title: "Building a customization API in Sass"
 ---
 
@@ -49,7 +53,7 @@ Furthermore, because we'll be keeping track of which selectors are using which c
 
 This is the end result of what we will be building today. Take a look at the code, and follow along as we go through creating this API and understanding the methodology behind it, if that's your thing.
 
-<p class="sassmeister" data-gist-id="ccf842e5ee74287f1868" data-height="480"><a href="http://sassmeister.com/gist/ccf842e5ee74287f1868">Play with this gist on SassMeister.</a></p><script src="http://static.sassmeister.com/js/embed.js" async></script>
+<p class="sassmeister" data-gist-id="ccf842e5ee74287f1868" data-height="480"><a href="http://sassmeister.com/gist/ccf842e5ee74287f1868">Play with this gist on SassMeister.</a></p>
 
 ## Building our palette
 

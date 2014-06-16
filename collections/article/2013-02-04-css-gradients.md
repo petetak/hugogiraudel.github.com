@@ -6,7 +6,10 @@ disqus: http://hugogiraudel.com/blog/css-gradients
 guest: "Ana Tudor"
 layout: post
 numberedFigures: true
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Dig deep into CSS linear gradients"
 ---
 

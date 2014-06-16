@@ -3,7 +3,10 @@ codepen: true
 comments: true
 date: 2014-03-03
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Another Sass button library"
 ---
 

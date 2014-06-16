@@ -2,7 +2,10 @@
 date: 2014-03-25
 comments: true
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "SassyMatrix: because one dimension wasn't enough"
 ---
 

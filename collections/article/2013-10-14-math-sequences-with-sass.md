@@ -4,6 +4,9 @@ external:
   host: The Sass Way
   url: http://thesassway.com/advanced/math-sequences-with-sass
 layout: none
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Math sequences with Sass"
 ---

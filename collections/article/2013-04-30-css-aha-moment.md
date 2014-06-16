@@ -1,8 +1,11 @@
 ---
 comments: true
 layout: post
+preview: false
 published: true
 date: 2013-04-30
+sassmeister: false
+summary: false
 title: "My CSS Aha moment"
 ---
 

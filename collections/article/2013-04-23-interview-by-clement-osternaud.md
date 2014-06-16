@@ -2,7 +2,10 @@
 comments: true
 date: 2013-04-23
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "My interview by Clément Osternaud"
 ---
 

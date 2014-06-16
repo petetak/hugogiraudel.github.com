@@ -2,7 +2,10 @@
 comments: true
 date: 2014-01-15
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "Casting a string to a number in Sass"
 ---
 

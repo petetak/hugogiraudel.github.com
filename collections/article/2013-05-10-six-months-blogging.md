@@ -2,8 +2,11 @@
 comments: true
 date: 2013-05-10
 layout: post
+preview: false
 numberedFigures: true
 published: true
+sassmeister: false
+summary: false
 title: "Six months of blogging"
 ---
 

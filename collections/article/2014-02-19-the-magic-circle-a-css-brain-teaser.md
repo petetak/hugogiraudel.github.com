@@ -2,7 +2,10 @@
 comments: true
 date: 2014-02-19
 layout: post
+preview: false
 published: true
+sassmeister: false
+summary: false
 title: "The Magic Circle: a CSS brain teaser"
 ---
 
