@@ -1,22 +1,22 @@
 ---
 codepen: false
-comments: false
+comments: true
 disqus: false
-date: 2014-06-16
+date: 2014-06-17
 guest: false
 layout: post
-preview: true
+preview: false
 published: true
 sassmeister: false
 summary: false
 title: "Template engines and JavaScript"
 ---
 
-I couldn't find an appropriate title. I recently moved my site from Jekyll to Mixture and took the time to rethink the way I dealt with JavaScript. In this article, I will give you my opinion regarding this topic and show you how I managed to execute conditional JavaScript depending on global variables.
+I couldn't find an appropriate title. I recently [moved my site from Jekyll to Mixture](http://mixture.io/blog/jekyll-mixture/) and took the time to rethink the way I dealt with JavaScript. In this article, I will give you my opinion regarding this topic and show you how I managed to execute conditional JavaScript depending on global variables.
 
 ## Template what..?
 
-A template engine is some kind of tool helping you writing markup. [Twig]() is the template engine coming with Symfony. Both Jekyll and Mixture uses [Liquid](), the template engine from Shopify. You may also have heard of Smarty, Mustache.js or Handlebars.js. 
+A template engine is some kind of tool helping you writing markup. [Twig]() is the template engine coming with Symfony. Both Jekyll and Mixture uses [Liquid](), the template engine from Shopify. You may also have heard of Smarty, Mustache.js or Handlebars.js.
 
 The idea behind any template engine is to have template files that can be used and reused, imported and extended in order to have a dynamic, DRY and reusable HTML architecture. In this article, I will mostly talk about Liquid because it is the one used by Jekyll and Mixture, as well as Twig which I heavily use at work.
 
@@ -61,7 +61,7 @@ When moving to Mixture, I took the time to think of how I would solve this issue
 ```javascript
 // app.js
 (function (global) {
-  
+
   var App = function (conf) {
     this.conf = global.extend({
       codepen: false,
@@ -169,7 +169,7 @@ App.prototype._inject = function (url) {
 };
 ```
 
-All resources are loaded asynchronously thanks to the `_inject` (pseudo-)private function. 
+All resources are loaded asynchronously thanks to the `_inject` (pseudo-)private function.
 
 ## So what?
 
@@ -202,6 +202,6 @@ This is the only chunk of JavaScript in a template file. It is called on every p
 
 ## Final thoughts
 
-There you have it. A clean JavaScript application running on template variables, yet not using engine's conditional tags or being written in a template file. 
+There you have it. A clean JavaScript application running on template variables, yet not using engine's conditional tags or being written in a template file.
 
 If you think of anything to improve it, be sure to share. In any case, I hope you liked it. :)
