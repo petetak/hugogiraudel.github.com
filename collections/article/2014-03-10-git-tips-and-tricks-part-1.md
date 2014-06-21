@@ -13,6 +13,8 @@ title: "Git tips and tricks - Part 1"
 
 <p class="explanation">Hey guys! The following is the first post of a series written by my dear brother Loïc, Git expert at Best Of Media (Tom's Guide & Tom's Hardware). I'll release the next parts in the next few weeks, so be sure to stay tuned for more Git awesomeness!</p>
 
+> **Update 2014-03-17:** Part 2 is out! Go check [it](http://hugogiraudel.com/2014/03/17/git-tips-and-tricks-part-2/).
+
 Hi guys! Today, I'm gonna share with you some Git tips & tricks I've already shared with my workmates at Best Of Media. But before even starting let's never forget the more important laws of Git.
 
 **Law #1**: **each commit must let the branch into a stable state**.

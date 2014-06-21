@@ -13,6 +13,8 @@ title: "Git tips and tricks - Part 2"
 
 <p class="explanation">Hi dear folks! This is the 2nd part of the <em>Git Tips & Tricks</em> series from Loïc Giraudel. If you missed the first post, be sure to <a href="http://hugogiraudel.com/2014/03/10/git-tips-and-tricks-part-1/">give it a read</a>! And now fasten your belts folks, because this is some serious Git fu!</p>
 
+> **Update 2014-03-24:** Part 3 is out! Go check [it](http://hugogiraudel.com/2014/03/24/git-tips-and-tricks-part-3/).
+
 Hey guys! I hope you enjoyed the first part of the series. In this one, I will introduce you even more tricks to improve the diff output, create some useful aliases and master (no pun intended) mandatory commands to be able to approach advanced Git concepts and commands. Ready?
 
 ## Improve diff output 
