@@ -64,27 +64,27 @@ We are going to keep our colors in a sub-map called *"palette"* so we can keep o
 ```scss
 // Customization module defaults
 $customizer: (
-	"palette": (
-		"primary": (
-			"lightest": #eff3d1,
-			"light": #bbdfbc,
-			"base": #8bb58e,
-			"dark": #0b3c42,
-			"darkest": #092226,
-		),
-		"complementary": (
-			"light": #f6616e,
-			"base": #f2192c,
-			"dark": #b40a19,
-		),
-		"gray": (
-			"light": #819699,
-			"base": #4b5557,
-			"dark": #333a3b,
-		),
-		"black": #131517,
-		"white": #f2f9ff,
-	),
+  "palette": (
+    "primary": (
+      "lightest": #eff3d1,
+      "light": #bbdfbc,
+      "base": #8bb58e,
+      "dark": #0b3c42,
+      "darkest": #092226,
+    ),
+    "complementary": (
+      "light": #f6616e,
+      "base": #f2192c,
+      "dark": #b40a19,
+    ),
+    "gray": (
+      "light": #819699,
+      "base": #4b5557,
+      "dark": #333a3b,
+    ),
+    "black": #131517,
+    "white": #f2f9ff,
+  ),
 ) !global;
 
 // Global variables
@@ -101,14 +101,14 @@ Before we go any further, let's decide on how we want our API to work. To be abl
 
 ```scss
 .selector {
-	@include customizer(
-		$args: (
-			color: "white",
-			background: "primary" "darkest",
-			border-color: "complementary" "base"
-		), 
-		$uses: "palette"
-	);
+  @include customizer(
+    $args: (
+      color: "white",
+      background: "primary" "darkest",
+      border-color: "complementary" "base"
+    ), 
+    $uses: "palette"
+  );
 }
 ```
 
@@ -130,41 +130,38 @@ I also want to make it fall back to outputting plain CSS if no module to use is 
 
 @mixin customizer($args, $uses: null) {
   
-	// Make sure argument is a map
-	@if is-map($args) {
+  // Make sure argument is a map
+  @if is-map($args) {
 
-		// Use module? Expecting module to exist
-		@if $uses != null {
+    // Use module? Expecting module to exist
+    @if $uses != null {
 
-			// Check if module exists
-			@if exists($customizer, $uses) {
-
-				// ... All is safe, let's work with the arguments
-
+      // Check if module exists
+      @if exists($customizer, $uses) {
+        // ... All is safe, let's work with the arguments
       } 
 
-			// Module did not exist, throw error
+      // Module did not exist, throw error
       @else {
-				@warn "Invalid argument: #{$uses}. Module was not found.";
-			}
+        @warn "Invalid argument: #{$uses}. Module was not found.";
+      }
 
     } 
 
-		// No module specified, expecting plain CSS
+    // No module specified, expecting plain CSS
     @else {
+      // ... Since we'll be expecting valid CSS, let's output it here
 
-			// ... Since we'll be expecting valid CSS, let's output it here
-
-			// Warn that customization mixin shouldn't be used without a module
-			@warn "The customization mixin should not be used without specifying a module to use.";
-		}
+      // Warn that customization mixin shouldn't be used without a module
+      @warn "The customization mixin should not be used without specifying a module to use.";
+    }
 
   } 
 
-	// Argument was not a map, throw error
+  // Argument was not a map, throw error
   @else {
-		@warn "Invalid argument: #{$args}. Argument type is not a map.";
-	}
+    @warn "Invalid argument: #{$args}. Argument type is not a map.";
+  }
 }
 ```
 
@@ -179,20 +176,20 @@ Now, since we want to be able to pass multiple customizable properties into a si
 ```scss
 // @if exists($customizer, $uses) {
 
-	// Run through each argument individually
-	@each $arg in $args {
-		// Break up argument into property->value
-		$property: nth($arg, 1);
-		$value: nth($arg, 2);
+  // Run through each argument individually
+  @each $arg in $args {
+    // Break up argument into property->value
+    $property: nth($arg, 1);
+    $value: nth($arg, 2);
 
-		// Get values from module
-		@if is-list($value) or exists($customizer, $value) {
-			$value: // ... We need to fetch the values from our module here;
-		}
+    // Get values from module
+    @if is-list($value) or exists($customizer, $value) {
+      $value: // ... We need to fetch the values from our module here;
+    }
 
-		// Output styles
-		#{$property}: $value;
-	}
+    // Output styles
+    #{$property}: $value;
+  }
 
 // } @else module did not exist
 ```
@@ -214,31 +211,31 @@ Which brings us to the second argument! Since the function needs to know which m
 // @return {*} - $value from $module
 
 @function use-module($args, $module) {
-	$exists: true;
+  $exists: true;
 
-	// Append the list of arguments to the module to pass to map-fetch
-	$module: join($module, $args);
+  // Append the list of arguments to the module to pass to map-fetch
+  $module: join($module, $args);
 
-	// Check if sub-modules exist
-	// Make sure all sub-modules exist
-	@if length($args) > 1 {
-		@each $arg in $args {
-			@if not exists($customizer, $arg) {
-				$exists: false;
-			}
-		}
-	}
+  // Check if sub-modules exist
+  // Make sure all sub-modules exist
+  @if length($args) > 1 {
+    @each $arg in $args {
+      @if not exists($customizer, $arg) {
+        $exists: false;
+      }
+    }
+  }
 
-	@if $exists {
-		// Grab value from module by passing in newly built list
-		@return map-fetch($customizer, $module);
-	} 
+  @if $exists {
+    // Grab value from module by passing in newly built list
+    @return map-fetch($customizer, $module);
+  } 
 
   @else {
-		// One or more of the modules were not found, throw error
-		@warn "Invalid arguments: #{$module}. One or more module or sub-module not found.";
-		@return false;
-	}
+    // One or more of the modules were not found, throw error
+    @warn "Invalid arguments: #{$module}. One or more module or sub-module not found.";
+    @return false;
+  }
 }
 ```
 
@@ -261,27 +258,27 @@ The function will be called `new-customizer-instance()`. It will take two argume
 // @return {Map} updated instance map
 
 @function new-customizer-instance($args, $module) {
-	// Define static selector
-	$selector: selector-string(); // Flint Ruby function
-	// Empty argument map
-	$instance-properties: ();
+  // Define static selector
+  $selector: selector-string(); // Flint Ruby function
+  // Empty argument map
+  $instance-properties: ();
 
-	// Run through each argument individually
-	@each $property, $value in $args {
-		// Merge into argument map
-		$instance-properties: map-merge($instance-properties, (
-			"#{$property}": (
-				"module": $module,
-				"value": $value
-			)
-		));
-	}
+  // Run through each argument individually
+  @each $property, $value in $args {
+    // Merge into argument map
+    $instance-properties: map-merge($instance-properties, (
+      "#{$property}": (
+        "module": $module,
+        "value": $value
+      )
+    ));
+  }
 
-	// Create new instance map for selector, save properties
-	$customizer-instance: ("#{$selector}": $instance-properties);
+  // Create new instance map for selector, save properties
+  $customizer-instance: ("#{$selector}": $instance-properties);
 
-	// Merge into main map
-	@return map-merge($customizer-instances, $customizer-instance);
+  // Merge into main map
+  @return map-merge($customizer-instances, $customizer-instance);
 }
 ```
 
@@ -302,7 +299,7 @@ But, as we can tell from the function above, it's returning a merged map, but we
 // @return {Map} - updated instance map
  
 @mixin new-customizer-instance($args, $module) {
-	$customizer-instances: new-customizer-instance($args, $module) !global;
+  $customizer-instances: new-customizer-instance($args, $module) !global;
 }
 ```
 
@@ -347,7 +344,7 @@ Going back to our main `customizer()` mixin, let's update the code to include al
             // Get values from sub-module
             $value: use-module($value, $uses);  
           } 
-		  
+          
           // Sub-module did not exist, throw error
           @else {
             @warn "Invalid argument: #{$value}. Sub-module was not found.";
@@ -381,11 +378,11 @@ Above, I simply added in our new functions, and if all went well, our code shoul
 
 ```scss
 .selector {
-	@include customizer($args: (
-		color: "white",
-		background: "primary" "darkest",
-		border-color: "complementary" "base",
-	), $uses: "palette");
+  @include customizer($args: (
+    color: "white",
+    background: "primary" "darkest",
+    border-color: "complementary" "base",
+  ), $uses: "palette");
 }
 ```
 
@@ -394,21 +391,21 @@ Everytime the `customizer()` mixin is run, a new instance is created with all of
 ```scss
 // Updates the global instance map with the new selector,
 $customizer-instances: (
-	".selector": (
-			"color": (
-				"module": "palette",
-				"value": "white",
-			), 
-			"background": (
-				"module": "palette",
-				"value": ("primary", "darkest"),
-			),
-			"border-color": (
-				"module": "palette",
-				"value": ("complementary", "base"),
-			),
-		),
-	),
+  ".selector": (
+      "color": (
+        "module": "palette",
+        "value": "white",
+      ), 
+      "background": (
+        "module": "palette",
+        "value": ("primary", "darkest"),
+      ),
+      "border-color": (
+        "module": "palette",
+        "value": ("complementary", "base"),
+      ),
+    ),
+  ),
 );
 ```
 
@@ -417,9 +414,9 @@ Then the new styles are fetched and outputted into the stylesheet.
 ```scss
 // And outputs the selectors styles from our module,
 .selector {
-	color: #f2f9ff;
-	background: #092226;
-	border-color: #f2192c;
+  color: #f2f9ff;
+  background: #092226;
+  border-color: #f2192c;
 }
 ```
 
