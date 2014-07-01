@@ -4,7 +4,7 @@ comments: false
 date: 2014-06-25
 external:
   host: Youtube
-  url: https://www.youtube.com/watch?v=H6Y9r49InXo&feature=youtu.be
+  url: https://www.youtube.com/watch?v=H6Y9r49InXo
 layout: none
 preview: false
 published: true
