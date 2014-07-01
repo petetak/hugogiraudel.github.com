@@ -1,7 +1,7 @@
 ---
 codepen: false
 comments: true
-date: 2014-06-29
+date: 2014-07-01
 disqus: false
 guest: "Ezekiel Gabrielse"
 layout: post
