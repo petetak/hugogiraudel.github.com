@@ -1,11 +1,11 @@
 ---
 codepen: false
-comments: false
+comments: true
 date: 2014-06-22
 disqus: false
 guest: false
 layout: post
-preview: true
+preview: false
 published: true
 sassmeister: false
 summary: false
@@ -17,10 +17,10 @@ A couple of days ago, [Valérian Galliat](https://twitter.com/valeriangalliat) a
 > **Hugo**: Do you know how bitwise operators work?  
 > **Val**: Yes.  
 > **Hugo**: Do you think we could implement them in Sass?  
-> **Val**: No.   
+> **Val**: No.  
 > (Loading...)  
 > **Val**: Well, in fact we could.  
-> **Hugo**: LET'S DO IT!
+> **Hugo**: LET'S DO IT!  
 
 And so we did, hence a short article to relate the story as well as providing a (useless) use case. But first let's catch up on bitwise operators, shall we?
 
@@ -65,7 +65,7 @@ XOR 1010 (decimal 10)
 =  00001011 (decimal 11)
 ```
 
-As you can see, the idea is pretty straightforward: 
+As you can see, the idea is pretty straightforward:
 
 * *NOT* converts `1`s in `0`s, and `0`s in `1`s
 * *AND* takes `1`s if both are `1`s, else `0`
@@ -81,7 +81,7 @@ If you're more a *table* kind of guy:
 | NOT         | 1        | 0      |
 | NOT         | 0        | 1      |
 
-| Bit 1    | Bit 2    | AND    | OR     | XOR    | 
+| Bit 1    | Bit 2    | AND    | OR     | XOR    |
 |:--------:|:--------:|:------:|:------:|:------:|
 | 1        | 0        | 0      | 1      | 1      |
 | 0        | 1        | 0      | 1      | 1      |
@@ -105,13 +105,17 @@ Now, we wanted to implement this in Sass. There are two ways of doing it:
 
 We could have decided to manipulate binary strings but god knows why, we ended up implementing the mathematical equivalents of all operators. Fortunately, we didn't have to figure out the formula (we are not *that* clever): [Wikipedia has them](http://en.wikipedia.org/wiki/Bitwise_operation#Mathematical_equivalents).
 
-You may think that we didn't need a decimal to binary converter since we use math rather than string manipulation. Actually, we had to write a `decimal-to-binary()` function because we needed to know the length of the binary string to compute bitwise operations. We could have figured this length without converting to binary if we had a `log()` function. And we could have made a `log()` function if we had a `frexp()` function. And we could have made a `frexp()` function if we had bitwise operators. Do you see the problem here?
+You may think that we didn't need a decimal to binary converter since we use math rather than string manipulation. Actually, we had to write a `decimal-to-binary()` function because we needed to know the length of the binary string to compute bitwise operations. 
+
+We could have figured this length without converting to binary if we had a `log()` function. And we could have made a `log()` function if we had a `frexp()` function. And we could have made a `frexp()` function if we had bitwise operators. Do you see the problem here?
 
 Valérian summed it up quite nicely in a Tweet:
 
+{% raw %}
 <blockquote class="twitter-tweet" data-partner="tweetdeck"><p>&amp;, | and ^ bitwise operators math formulas needs log(), but log() needs frexp() which needs bitwise operators. Fak! cc <a href="https://twitter.com/HugoGiraudel">@HugoGiraudel</a></p>&mdash; Valérian Galliat (@valeriangalliat) <a href="https://twitter.com/valeriangalliat/statuses/474127810798555136">June 4, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
- 
+{% endraw %}
+
 I won't dig into Sass code because it doesn't have much point. Let's just have a look at the final implementation. We have implemented each operator as a Sass function called `bw-*` where `*` stands for the name of the operator (e.g. `and`). Except for `bw-not()` which is a rather particuliar operator, all functions accept 2 arguments: both decimal numbers.
 
 On top of that, we have built a `bitwise()` function (aliased as `bw()`) which provides a more friendly API when dealing with bitwise operations. It accepts any number of queued bitwise operations, where operators are quoted. For instance:
@@ -125,12 +129,11 @@ So that's not too bad. The fact that operators have to be quoted for Sass not to
 
 ## Applications
 
-Let's be honest: there is none. Sass is not a low-level programming language. It does not have any valid use case for bitwise operations. Meanwhile, we implemented bit flags. *Bit flags* is a programming technique aiming at storing several booleans in a single integer in ordre to save memory. 
+Let's be honest: there is none. Sass is not a low-level programming language. It does not have any valid use case for bitwise operations. Meanwhile, we implemented bit flags. *Bit flags* is a programming technique aiming at storing several booleans in a single integer in ordre to save memory.
 
-Here is a great [introduction to bit flags](http://forum.codecall.net/topic/56591-bit-fields-flags-tutorial-with-example/) but I'll try to sum up. The idea behind *bit flags* is to have a collection of flags (think of them as options) mapped to powers of 2 (usually with an `enum` field in C/C++). Each option will have its own bit flag. 
+Here is a great [introduction to bit flags](http://forum.codecall.net/topic/56591-bit-fields-flags-tutorial-with-example/) but I'll try to sum up. The idea behind *bit flags* is to have a collection of flags (think of them as options) mapped to powers of 2 (usually with an `enum` field in C/C++). Each option will have its own bit flag.
 
-```
-00000000 Bin    | Dec
+<pre style="line-height: .9"><code>00000000 Bin    | Dec
 │││││││└ 1 << 0 | 1
 ││││││└─ 1 << 1 | 2
 │││││└── 1 << 2 | 4
@@ -138,8 +141,7 @@ Here is a great [introduction to bit flags](http://forum.codecall.net/topic/5659
 │││└──── 1 << 4 | 16
 ││└───── 1 << 5 | 32
 │└────── 1 << 6 | 64
-└─────── 1 << 7 | 128
-```
+└─────── 1 << 7 | 128</code></pre>
 
 Now, let's say option A is `1 << 0` (DEC 1) and option B is `1 << 1` (DEC 2). If we *OR* them:
 
@@ -169,7 +171,7 @@ AND 00000100 (C)
   = 00000000
 ```
 
-The result of `Z & C` isn't equal to `C`, so we can safely assume the C option hasn't been passed. 
+The result of `Z & C` isn't equal to `C`, so we can safely assume the C option hasn't been passed.
 
 That's pretty much how bit flags work. Now let's apply it to Sass as an example of SassyBitwise. First thing to do, define a couple of flags:
 
