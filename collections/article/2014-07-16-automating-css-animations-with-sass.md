@@ -4,7 +4,7 @@ comments: true
 date: 2014-07-16
 disqus: false
 layout: post
-preview: true
+preview: false
 published: true
 sassmeister: true
 summary: false
