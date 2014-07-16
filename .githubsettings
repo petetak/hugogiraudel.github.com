@@ -1,11 +1,11 @@
 {
-  "email": "hugo.giraudel@gmail.com",
-  "gitHubPages": {
-    "branch": "master",
-    "guid": "92CB1861-B327-43D5-AE97-650BFFB1D64A",
-    "repoUrl": "https://github.com/HugoGiraudel/hugogiraudel.github.com.git"
-  },
-  "name": "Hugo Giraudel",
-  "password": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imh1Z28uZ2lyYXVkZWxAZ21haWwuY29tIiwicGFzc3dvcmQiOiJzb21ldGhpbmcgdG8gdGhpbmsgYWJvdXQgZ2l0In0=.Nyd4uOSdS1vJwP+i4mgXxaNDD5nFmzQq/38Fu8aJ+dg=",
-  "username": "HugoGiraudel"
+    "username": "HugoGiraudel",
+    "password": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6InNvbWV0aGluZyB0byB0aGluayBhYm91dCBnaXQiLCJlbWFpbCI6Imh1Z28uZ2lyYXVkZWxAZ21haWwuY29tIn0.F4APeKl338Vkzsd9ZlLPeblIcT65G4qKF8GR_epQv04",
+    "name": "Hugo Giraudel",
+    "email": "hugo.giraudel@gmail.com",
+    "gitHubPages": {
+        "repoUrl": "https://github.com/HugoGiraudel/hugogiraudel.github.com.git",
+        "guid": "3114170d-79d7-4615-bd44-fe181c04b381",
+        "branch": "master"
+    }
 }
