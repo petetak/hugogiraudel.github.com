@@ -1,14 +1,14 @@
 ---
 codepen: false
 comments: false
-date: 2014-07-03
+date: 2014-07-17
 external:
   host: SitePoint
-  url: http://www.sitepoint.com/sassdoc-documentation-tool-sass/
+  url: http://www.sitepoint.com/using-sass-build-color-palettes/
 layout: none
 preview: false
 published: true
 sassmeister: false
 summary: false
-title: "SassDoc, a documentation tool for Sass"
+title: "Using Sass to build color palettes"
 ---
