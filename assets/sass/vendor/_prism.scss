@@ -112,7 +112,7 @@ pre {
 
 .token.string,
 .token.newline {
-  color: green;
+  color: lighten(green, 15%);
 }
 
 .token.coord {

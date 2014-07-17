@@ -22,7 +22,7 @@ h1, .h1 {
 	@include rem(3.6);
 	font-family: 'Sanchez', sans-serif;
 	text-shadow: 0 1px white, 0 2px $lightgrey;
-	margin: 1.5em 0 0 0;
+	margin: 1.1em 0 0 0;
 	text-transform: uppercase;
 
 	@include breakpoint(small) {
