@@ -2,7 +2,7 @@
 
 {% block title %}HugoGiraudel.com{% endblock %}
 
-{% block content %} 
+{% block content %}
 	{% collection "article" by 7 query "preview=false" order desc %}
 		{% if collection.current_page > collection.pages and collection.size > 0 %}
 			{% include "articles/paged-too-far" %}
