@@ -1,14 +1,14 @@
 ---
 codepen: false
 comments: false
-date: 2014-10-24
+date: 2014-11-05
 external:
   host: SitePoint
-  url: http://www.sitepoint.com/building-ad-manager-symfony-2/
+  url: http://www.sitepoint.com/blogging-wordpress-or-jekyll/
 layout: none
 preview: false
 published: true
 sassmeister: false
 summary: false
-title: "Building an ad manager with Symfony 2"
+title: "Blogging: WordPress or Jekyll"
 ---

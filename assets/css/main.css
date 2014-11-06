@@ -683,6 +683,11 @@ pre {
 /* -------- *
  * $GLOBALS *
  * -------- */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 /**
  * RESET ALL THE THINGS! (barbarian style)
  * 1. Include pseudo-elements which are not target by *
@@ -693,9 +698,9 @@ pre {
 *:before,
 *:after {
   /* 1 */
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
   /* 2 */
   padding: 0;
   /* 3 */
@@ -711,7 +716,8 @@ html {
   /* 1 */
   color: #555;
   text-shadow: 0 1px rgba(255, 255, 255, 0.6);
-  border-left: 6px solid #3fa3d5; }
+  border-left: 6px solid #3fa3d5;
+  background: white; }
   @media (max-width: 38em) {
     html {
       border-left: none;
