@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     comments: {% if post.comments %}true{% else %}false{% endif %},
     layout: {% if post.layout %}'article'{% else %}'default'{% endif %},
     disqus: {
-      title: '{{ post.title }}',
+      title: "{{ post.title }}",
       url: {% if post.disqus %}'{{ post.disqus }}'{% else %}window.location.href{% endif %},
       name: 'hugogiraudel'
     },
