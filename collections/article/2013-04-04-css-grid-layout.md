@@ -9,11 +9,11 @@ summary: true
 title: "Future of CSS layout: CSS Grid"
 ---
 
-> **Update (2014-05-13):** it looks like Internet Explorer is not the only browser to support the Grid Layout anymore since Chrome 34+ seems able to handle it quite well without any prefix. To the future!
+> **Edit (2014/05/13):** it looks like Internet Explorer is not the only browser to support the Grid Layout anymore since Chrome 34+ seems able to handle it quite well without any prefix. To the future!
 
 In the last few days/weeks, I have been helping Chris Coyier with [CSS-Tricks' Almanac](http://css-tricks.com/almanac/). It seems he doesn't have enough time to fill the last remaining entries, so we've been a few to help him out by writing them. I have done [perspective](http://css-tricks.com/almanac/properties/p/perspective/), [perspective-origin](http://css-tricks.com/almanac/properties/p/perspective-origin/) and [grid](http://css-tricks.com/almanac/properties/g/grid/).
 
-I've to say it's been a real pleasure to do this, mostly because I've learnt literally a ton of stuff. Some people say the best way to learn is through teaching, I can say it's mostly true. 
+I've to say it's been a real pleasure to do this, mostly because I've learnt literally a ton of stuff. Some people say the best way to learn is through teaching, I can say it's mostly true.
 
 Anyway, if `perspective` and `perspective-origin` have been quite easy to do, I must say `grid` has been a whole another story. This is by far the most complicated thing I have ever seen in CSS. Let me introduce the topic.
 
@@ -33,7 +33,7 @@ The CSS Grid Layout consists on defining a 2-dimensional grid in which the child
 * no need for margins to space columns from each others
 * easily adjustable when it comes to responsive
 
-The basic example would be something like this: my `.wrapper` is my grid; `.header` will all columns of the first row; `.main` will by displayed in the second row and the first column; `.sidebar` in the second row, second column; and `.footer` in the third row, all columns. 
+The basic example would be something like this: my `.wrapper` is my grid; `.header` will all columns of the first row; `.main` will by displayed in the second row and the first column; `.sidebar` in the second row, second column; and `.footer` in the third row, all columns.
 
 ## What's complicated?
 
@@ -77,8 +77,8 @@ Now the CSS. Pay attention to the number of lines:
 
 .header, .footer { grid-column-span: 5; }
 
-.sidebar, 
-.main, 
+.sidebar,
+.main,
 .annexe { grid-row: 3; }
 .header { grid-row: 1; }
 .footer { grid-row: 5; }
@@ -88,7 +88,7 @@ Now the CSS. Pay attention to the number of lines:
 .annexe  { grid-column: 5; }
 ```
 
-Done. **10 lines. No float. No inline-block. No height. No width. No margin.** And if you want to make everything nice on small devices, it will take no more than a couple of more lines (8 in this example). 
+Done. **10 lines. No float. No inline-block. No height. No width. No margin.** And if you want to make everything nice on small devices, it will take no more than a couple of more lines (8 in this example).
 
 *Note: I won't explain the syntax in this article. If you want to understand how works the Grid Layout, please have a look at [CSS-Tricks' Almanac entry](http://css-tricks.com/almanac/properties/g/grid/).*
 

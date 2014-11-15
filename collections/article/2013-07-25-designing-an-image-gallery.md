@@ -9,7 +9,7 @@ summary: false
 title: "Designing an image gallery"
 ---
 
-
+> **Edit (2014/11/16):** I took time to improve this site. It now works fine without JavaScript and has been ported to Jekyll. Also both Sass and JavaScript code have been improved.
 
 Hey guys! I recently had the opportunity to work on a cool little project I'd like to talk about: an advanced image gallery with some really cool features. Indeed, I've been asked to design and develop the site of [Alexandra Lucas](http://alexandralucas.com) to promote her work as a French photographer. Since I'm a big fan of her work, I accepted and it turned out to be quite fun to work on this project.
 
@@ -26,7 +26,7 @@ Let's say things straight: I'd never have the opportunity to work on an image ga
 
 The main content of the site is **photographs**. The goal is to show them. Alexandra wanted something "Flickr-like". Some sort of wall of photos that automagically adapt to the size of your screen. Kind of a cool layout, really.
 
-At first I thought about doing it myself and then... 
+At first I thought about doing it myself and then...
 
 ![Coding a responsive image gallery by hand? What about no!](/images/design-an-image-gallery__how-about-no-bear.jpg)
 
@@ -55,10 +55,10 @@ Meanwhile the pictures are all wrapped in a regular unordered list which has a h
 
 ```markup
 <li class='gallery__item'>
-    <img 
+    <img
       class='gallery__image'
       src="images/filename.jpg"
-      alt="Alt text" 
+      alt="Alt text"
       width="400" height="266" />
 ```
 
@@ -153,7 +153,7 @@ So I guess it is not that bad since this solution handles almost everything for 
 
 *Edit: I finally wrote my own script to deal with high-density displays because RetinaJS and LazyLoad were kind of conflicting with each other.*
 
-## Think (and do) about performance 
+## Think (and do) about performance
 
 I think this is what took me the most time in the entire project even if I have a decent knowledge of front-end performance (without being an expert).
 
@@ -167,11 +167,11 @@ The next step was to load images when they are needed. To put it simple, only lo
 
 ```markup
 <li class='gallery__item' data-album='album-name'>
-    <img 
+    <img
       class='gallery__image'
       src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-      data-original="images/filename.jpg" 
-      alt="Alt text" 
+      data-original="images/filename.jpg"
+      alt="Alt text"
       width="400" height="266" />
 ```
 
@@ -179,7 +179,7 @@ The next step was to load images when they are needed. To put it simple, only lo
 
 As you can see, the image source is a 1*1px blank GIF while the actual source lies in the `data-original` attribute. Then the LazyLoad script checks all images to see whether they are above the fold or not; if they are, it swaps `src` with `data-original`. Everytime there is a scroll, it checks again. Lightweight and comfy.
 
-Thanks to LazyLoad, I could bring down the page to 380Kb on a regular desktop screen. Definitely good. When viewing it on mobile, it goes down to ... 700 bytes. Then it progressively load the images as the user scroll through them. How cool is that? 
+Thanks to LazyLoad, I could bring down the page to 380Kb on a regular desktop screen. Definitely good. When viewing it on mobile, it goes down to ... 700 bytes. Then it progressively load the images as the user scroll through them. How cool is that?
 
 ## Final words
 

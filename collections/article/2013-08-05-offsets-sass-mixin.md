@@ -9,6 +9,8 @@ summary: false
 title: "Sass mixin for offsets"
 ---
 
+> **Edit (2014/05/19):** I updated this mixin to improve it, please focus on the [new article](http://hugogiraudel/2014/05/19/new-offsets-sass-mixin/).
+
 Over the last months, I have seen a ton of mixins to handle offsets when dealing with absolute / fixed / relative positioning. I also made a lot of them myself. And in the end, none of them really suited me. Either they were far too long or complicated, or the calling didn't feel right to me.
 
 A couple of days ago I came with a fairly new solution (to me) and I must say I am pretty satisfied with it so far. I might stick with this mixin for the next projects. Thus, I wanted to share it with you guys.
@@ -78,8 +80,8 @@ Now, we will loop through the offsets and make three verifications:
 	@each $o in $offsets {
 		$i: index($args, $o);
 
-		@if $i 
-		and $i + 1 <= length($args) 
+		@if $i
+		and $i + 1 <= length($args)
 		and type-of( nth($args, $i + 1) ) == number {
 			#{$o}: nth($args, $i + 1);
 		}
@@ -222,9 +224,9 @@ abcd {
 		property: value;
 	}
 }
-``` 
+```
 
-Is it supposed to mean *"assign `property: value` to a direct sibling `efgh` of `abcd`"* or *"call mixin `efgh` in `abcd`"*? Thus someone proposed `++` instead and it seems quite good so far. No idea when or if we will ever see this coming though. Let's hope. 
+Is it supposed to mean *"assign `property: value` to a direct sibling `efgh` of `abcd`"* or *"call mixin `efgh` in `abcd`"*? Thus someone proposed `++` instead and it seems quite good so far. No idea when or if we will ever see this coming though. Let's hope.
 
 ## Final words
 

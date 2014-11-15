@@ -10,6 +10,8 @@ summary: false
 title: "A round-up on CSS playgrounds"
 ---
 
+> **Edit (2014/11/16):** this article is quite old. Information might be incorrect.
+
 ## What is a code playground?
 
 A code playground is an online tool allowing you to do some code, then save and share it. It's often used for quick demos and reduced testcases. It's a good alternative to the old .html file with its embedded `<style>` and `<script>` tags.
@@ -20,10 +22,10 @@ Playgrounds are becoming more and more popular and there are a bunch of options 
 * <a href="http://dabblet.com" title="Dabblet">Dabblet</a> from Lea Verou
 * <a href="http://cssdeck.com" title="CSSDeck">CSSDeck</a> from Rishabh
 * <a href="http://jsfiddle.net" title="JSFiddle">JSFiddle</a> from Oskar Krawczyk
- 
+
 Basically, they all do more or less the same stuff but each one has its own strengths and weaknesses. So in the end the choice is up to the user. I'd like to give you my opinion on this stuff but first, let's make a little round-up.
 
-## Dabblet 
+## Dabblet
 
 Dabblet is an amazing playground<span style="text-decoration: line-through;">, however it doesn't support JavaScript. That being said, its author presented Dabblet as a pure CSS playground, so it's not very surprising JavaScript isn't supported</span>.
 
@@ -80,7 +82,7 @@ JSFiddle is a wonderful playground when it comes to JavaScript development since
 * [JSFiddle](http://jsfiddle.net)
 * [JSFiddle](https://twitter.com/jsfiddle) and [JSFiddleSupport](https://twitter.com/jsfiddlesupport) on Twitter
 
-## CSSDeck 
+## CSSDeck
 
 CSSDeck is fairly new in the playground scene but it's the only one providing the ability to record your code while you type it in order to have some kind of video. Basically, you can make video tutorial with CSSDeck, which you can't do with other playgrounds.
 
@@ -105,7 +107,7 @@ CSSDeck is fairly new in the playground scene but it's the only one providing th
 * [CSSDeck](https://twitter.com/cssdeck) on Twitter
 
 
-## CodePen 
+## CodePen
 
 CodePen is one hell of a playground. It provides very strong tools for each of the 3 supported languages and provides awesome features for registered users like personal gallery, tags, forks, likes and follows, various themes, etc.
 
@@ -139,7 +141,7 @@ Plus, authors pick best pens on the site and feature them on the front page. Thi
 * [Blog](http//blog.codepen.io)
 * [CodePen](https://twitter.com/codepen) on Twitter
 
-## What's my opinion 
+## What's my opinion
 
 Honestly, I think **CodePen is far ahead of any other playground out there**. All in all, it provides more options than others, it's more stable, less buggy, and far more popular even if it's only 6 months old.
 

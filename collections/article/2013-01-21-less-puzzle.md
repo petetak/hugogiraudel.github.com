@@ -8,12 +8,13 @@ published: true
 sassmeister: false
 summary: false
 title: "A little LESS puzzle"
---- 
+---
+
 Hi guys! What do you think of a little puzzle to wake up your neurons? I think I've found something tricky enough to worth a blog post and a little challenge about it.
 
 First of all, this will be a LESS puzzle, so if you're really unfamiliar with this CSS preprocessor, I think you might feel a bit lost here. Sorry! :(
 
-## What are the requirements 
+## What are the requirements
 
 So the main idea is to enable a Google Web Font using a variable to have only one occurrence of the font name without leaving the stylesheet. Let me explain the requirements a little better:
 
@@ -26,7 +27,7 @@ So the main idea is to enable a Google Web Font using a variable to have only on
 
 **Bonus:** make it work with compound font names (such as "Roboto Condensed").
 
-Accustomed to SASS like me will wonder where is the difficulty in this little exercise. Problem is LESS is extremely annoying when it comes to both url() and string concatenation. I partially covered the topic in <a href="http://hugogiraudel.com/2012/11/13/less-to-sass/">this article</a>. 
+Accustomed to SASS like me will wonder where is the difficulty in this little exercise. Problem is LESS is extremely annoying when it comes to both url() and string concatenation. I partially covered the topic in <a href="http://hugogiraudel.com/2012/11/13/less-to-sass/">this article</a>.
 
 ```scss
 /* SASS version */
@@ -50,4 +51,4 @@ However as of today, **there is no fix for this neither is there a workaround**.
 
 Plus, the guys behind LESS imply fixing this bug would require a large amount of work and deep code restructuration.
 
-No luck. 
+No luck.

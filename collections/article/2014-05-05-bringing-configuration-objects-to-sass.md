@@ -8,6 +8,7 @@ sassmeister: false
 summary: false
 title: "Bringing configuration objects to Sass"
 ---
+
 One thing I was really looking forward with [Sass maps](http://viget.com/extend/sass-maps-are-awesome) is the ability to have configuration objects for functions and mixins. You know how you pass objects to your JavaScript class constructors instead of several parameters? Well fasten your belt boys because I'm bringing this to Sass!
 
 ## An insight in the JS way of doing
@@ -79,7 +80,7 @@ Still not convince? Let's move on.
 
 ### Harder to maintain
 
-Adding or removing is as easy as updating the configuration object. No need to update all the calls or change arguments order if some of theme are optional. 
+Adding or removing is as easy as updating the configuration object. No need to update all the calls or change arguments order if some of theme are optional.
 
 ```javascript
 // Adding a parameter is simple; no need to worry about argument order
@@ -113,11 +114,11 @@ In a way, we don't really need this in Sass because it already provides *named a
 @include mixin($b: "boat");
 ```
 
-This is pretty neat. But if like me you'd rather have a single object instead of a collection of arguments, then read on. 
+This is pretty neat. But if like me you'd rather have a single object instead of a collection of arguments, then read on.
 
 > Being able to use configuration objects in Sass is amazing.
 
-Sass 3.3 is bringing maps which are the exact equivalent of JavaScript objects. Now that we have maps, we can do all the cool stuff we just talked about and **this is amazing**. All we need is an `extend` function to be able to extend a given object with an object of default parameters. 
+Sass 3.3 is bringing maps which are the exact equivalent of JavaScript objects. Now that we have maps, we can do all the cool stuff we just talked about and **this is amazing**. All we need is an `extend` function to be able to extend a given object with an object of default parameters.
 
 This could have been very easy to do but `map-merge` already does it for us. Indeed, when merging two maps it does exactly what we want: extend one map with the other. At best, we could alias the `map-merge` function with an `extend` function:
 
@@ -139,7 +140,7 @@ $object: (
   this: is amazing
 );
 
-$merge: extend($default-object, $object); 
+$merge: extend($default-object, $object);
 
 /**
  * This results in
@@ -211,7 +212,7 @@ This works great. It is easily readable, it does the job very well. However ther
 
 // Including component
 @include component((
-  theme: dark, 
+  theme: dark,
   name: 'module'
 ));
 ```
@@ -231,7 +232,7 @@ $component-conf: (
 
 ## Final thoughts
 
-There you go folks. This is definitely a more "Object" approach than the previous one and I can understand some people not liking it because it doesn't look like we are dealing with CSS anymore. 
+There you go folks. This is definitely a more "Object" approach than the previous one and I can understand some people not liking it because it doesn't look like we are dealing with CSS anymore.
 
 Now if you ask me, not only does it make both the mixin signature cleaner, but it also gives you more flexibility about your code structure and *this* is a big deal when working on a huge project with countless components. Being able to gather configuration maps in a variables file can make a huge difference when it comes to code maintenance.
 

@@ -9,6 +9,8 @@ summary: false
 title: "8 Compass features you may not know"
 ---
 
+> **Edit (2014/11/16):** I no longer use Compass. Just sayin'.
+
 [Compass](http://compass-style.org/) is a CSS authoring framework dedicated to [Sass](http://sass-lang.com/). Not only is it insanely powerful, but it also includes a large range of built-in functions and mixins, easing daily tasks.
 
 It occurred to me there was a couple of Compass features which remain pretty much unknown to most users so I thought it could be a good idea to write a short blog post about them.
@@ -36,7 +38,7 @@ I personally used this extension in this very site, when it comes to images and 
 	$opposite: opposite-position($direction);
 
 	text-align: $opposite;
-	float: $direction;  
+	float: $direction;
 	margin: 0 0 .5em 0;
 	margin-#{$opposite}: 1em;
 	border-#{$opposite}: 6px solid hotpink;
@@ -57,14 +59,14 @@ This may be useful as part of a CSS reset for example:
 ```scss
 @mixin reset-html5 {
 	#{elements-of-type(html5-block)} {
-		display: block; 
-	} 
+		display: block;
+	}
 }
 ```
 
 This snippet forces all HTML5 elements to be displayed as block-elements, even by unsupported browsers.
 
-## Experimental() 
+## Experimental()
 
 [Experimental](http://compass-style.org/reference/compass/css3/shared/) has to be one of the most used function in Compass and probably one of the less known at the same time.
 
@@ -73,7 +75,7 @@ Basically, `experimental()` allows you to define mixins outputing content depend
 ```scss
 @mixin box-sizing($bs) {
   $bs: unquote($bs);
-  @include experimental(box-sizing, $bs, -moz, -webkit, not -o, not -ms, not -khtml, official); 
+  @include experimental(box-sizing, $bs, -moz, -webkit, not -o, not -ms, not -khtml, official);
 }
 ```
 
@@ -184,7 +186,7 @@ In this example, the element will have a size relative to the background-image i
 
 *Note: beware, the path has to be relative to your project's image directory, defined in your `config.rb` file.*
 
-## Math functions 
+## Math functions
 
 If you're like a total nerd and want to do CSS with math, then you'll be pleased to know Compass has a bunch of built-in [math functions](http://compass-style.org/reference/compass/helpers/math/) like `sin()`, `cos()`, `pi()` among a few others.
 
@@ -193,7 +195,7 @@ I once had to use `sin()` in order to make a [mixin for a pure CSS 6-points star
 ```scss
 $n: 4;
 $pow :  pow($n); /* Returns 16 */
-$sqrt: sqrt($n); /* Returns 2  */ 
+$sqrt: sqrt($n); /* Returns 2  */
 ```
 
 ## Selector helpers
@@ -204,25 +206,25 @@ Once again, I am not sure if there are a bunch of real life use cases for such f
 
 ```scss
 /* nest() */
-nest(".class1", ".class2");          
+nest(".class1", ".class2");
 /* Outputs ".class1.class2" */
-nest(".class1, .class2", ".class3"); 
+nest(".class1, .class2", ".class3");
 /* Outputs ".class1.class3 .class2.class3" */
 
 /* append-selector */
-append-selector(".class1", ".class2"); 
+append-selector(".class1", ".class2");
 /* Outputs ".class1.class2" */
-append-selector("a, p, li", ".class"); 
+append-selector("a, p, li", ".class");
 /* Outputs "a.class, p.class, li.class" */
 
 /* headings() */
 #{headings()} {
-	font-family: 'My Awesome Font'; 
+	font-family: 'My Awesome Font';
 	/* Set font-family to all headings */
 }
 
 #{headings(1, 3)} {
-	font-weight: bold; 
+	font-weight: bold;
 	/* Set font-weight to h1, h2, h3 */
 }
 ```

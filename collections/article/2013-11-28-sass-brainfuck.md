@@ -152,7 +152,7 @@ The correct answer is:
 
 ```scss
 el {
-    font-size: 1em; 
+    font-size: 1em;
     margin-bottom: .6em;
 }
 ```

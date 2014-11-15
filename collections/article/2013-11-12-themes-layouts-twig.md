@@ -13,7 +13,7 @@ Hey guys! This post is going to be quite different from what I usually write abo
 
 But let's put some context first: Twig presents itself as a *template engine for PHP*. Kind of Jekyll, but far more powerful. The basic idea is to create reusable templates also called "views" (basically HTML blocks) to avoid repeating the same code again and again.
 
-## Some leveling-up about Twig 
+## Some leveling-up about Twig
 
 Since not all of you are Twig masters (neither am I though), I am going to explain a couple of things before entering the topic.
 
@@ -188,11 +188,11 @@ We only need the last piece of the puzzle: the page file. In this file, not much
 { % block layout % }
     { % embed '9-3.html.twig' % }
         { % block content % }
-            
+
             My awesome content
         { % endblock% }
         { % block sidebar % }
-            
+
             My sidebar content
         { % endblock % }
     { % endembed % }
@@ -208,11 +208,11 @@ We only need the last piece of the puzzle: the page file. In this file, not much
 <head><!-- whatever --></head>
 <body class="shopping">
     <div class="col-md-9  content">
-        
+
         My awesome content
     </div>
     <div class="col-md-3  sidebar">
-        
+
         My sidebar content
     </div>
 </body>

@@ -9,8 +9,6 @@ summary: false
 title: "A couple of Sass functions"
 ---
 
-
-
 We can do awesome things with Sass. It really pushes CSS to an upper level. More than that, it is so much fun to make Sass mixins and functions. Everytime I do something new, I'm like “whoaaa” even if it's a useless thing.
 
 Mixins are usually quite easy to deal with. Functions are a little more underground in Sass. So what if we go through a couple of functions (including useless ones) to see how we can build an efficient ones?
@@ -181,9 +179,9 @@ Let's have a look at the following list `$list: a b, c d, e f;`. `a` is kind of 
 @function match($haystack, $needle) {
   @each $item in $haystack {
     $index: index($item, $needle);
-    @if $index { 
+    @if $index {
       $return: if($index == 1, 2, $index);
-      @return nth($item, $return); 
+      @return nth($item, $return);
     }
   }
   @return false;

@@ -10,6 +10,10 @@ summary: false
 title: "My development environment"
 ---
 
+> **Edit (2014/11/16):** I don't use Windows anymore. I moved to Mac OS and Ubuntu. Also I don't use Canary/Aurora anymore, I switched back to regular versions. I updated Sublime Text to ST3. And I suck much less at Git.
+
+<!-- -->
+
 > **Edit (2014/05/13):** things have changed again. I don't use a FTP client anymore, and I have ditched Compass from nearly all my projects.
 
 <!-- -->
@@ -22,7 +26,7 @@ Well, first of all, it is kind of complicated because I work at 3 different plac
 
 Anyway, I will try to describe what I use to work.
 
-## Operating system 
+## Operating system
 
 Let's start with the easy thing: the operating system. First, **I use both Mac and Windows**. At home, I mostly use my girlfriend's laptop which is a 4-year old Mac. I also have 2 computers I use(d) for gaming which runs Windows 7 and Windows Vista.
 
@@ -32,7 +36,7 @@ At school we're on Windows 7. The computers there are pretty cool I must say.
 
 I didn't try Linux yet but I think I might come to it sooner or later. I like challenge.
 
-## Browser 
+## Browser
 
 Ah, browsers. Our main tools. For the record, not so long ago I swear only by Firefox. But when I started doing a lot of stuff on the web at the same time (running many tabs with somewhat heavy content like videos, WebGL, CSS animations, etc.), it occurred to me Firefox was suffering from a bad memory management. Which wasn't the case of Chrome.
 
@@ -50,17 +54,17 @@ I also have Opera and Safari on some computers to make unusual tests. Since I am
 
 I used to be a huge fan of Notepad++, even if everybody was using Dreamweaver. Honestly I never liked DW; it is super heavy while doing not much than a regular text editor.
 
-Now I am standing on [Sublime Text 2](http://www.sublimetext.com/2) on all my computers, with no intention to change soon. The thing Sublime Text 2 provides that Notepad++ doesn't is the ability to open a whole folder in order to have access to any file of your project in the arborescence. This is really cool. Plus Sublime Text 2 looks better in my opinion. :) 
+Now I am standing on [Sublime Text 2](http://www.sublimetext.com/2) on all my computers, with no intention to change soon. The thing Sublime Text 2 provides that Notepad++ doesn't is the ability to open a whole folder in order to have access to any file of your project in the arborescence. This is really cool. Plus Sublime Text 2 looks better in my opinion. :)
 
 That being said, I'm carefully looking into [Brackets](http://brackets.io/) from Adobe which is a web-based IDE looking pretty cool.
 
-## FTP 
+## FTP
 
 Call me old fashioned, I do still use a FTP client. Yes, I know it's not 2000' anymore but I don't know how to use FTP from the command line, so I am stuck with a [FileZilla](http://filezilla-project.org/). It is actually pretty cool and very easy to use.
 
 However I would like to move forward, thus I am currently learning how to do some FTP stuff through the command line but I'm still not very good at it so for now I keep using my beloved FileZilla.
 
-## Design 
+## Design
 
 Well, I am a huge fan of this **design in the browser** thing, plus I am very sucky when it comes to any designing tool. I mean you, Photoshop. So really, I hardly use Photoshop, unless I am forced to.
 
@@ -68,7 +72,7 @@ However I have the good luck to have an Adobe Creative Suite on most of my devel
 
 You may find this silly but 9 out of 10 times, I use Photoshop to resize and save a screenshot I just took. Yeah... A $3000 software to make screenshots is a bit expensive I guess.
 
-## Other tools 
+## Other tools
 
 I didn't know how to call this section because it gathers various tools doing various things I use at various occasions. I hope it's clear enough. :P
 

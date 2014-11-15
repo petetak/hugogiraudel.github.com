@@ -9,14 +9,13 @@ summary: false
 title: "Getting the most out of Sass placeholders"
 ---
 
-
 The other day I was looking at the source code from [GUFF](http://kenwheeler.github.io/guff/), a brand new Sass framework from [Ken Wheeler](https://github.com/kenwheeler). I like reviewing Sass code, I find it very interesting to have an insight at how other people tackle some common issues. By the way, if you want me to review your Sass code, I'll be glad to do so. ;)
 
 Anyway, I was looking at the code and to my surprise, Ken was mostly using mixins for common patterns, even when there was no variable involved whatsoever. You probably know it's considered bad practice to use a mixin when you don't need to make your styles varying according to passed arguments. Placeholders are best suited for such a thing. More informations on topic in [this article at SitePoint](http://www.sitepoint.com/sass-mixin-placeholder/).
 
 So [I opened an issue](https://github.com/kenwheeler/guff/issues/1) to prompt Ken to move away from mixins when there is no need for them, in favor of placeholders and while he was completely willing to do so, he was worried about usage in media queries. Let's pause here for some explanations.
 
-## @extend and media queries 
+## @extend and media queries
 
 This is something I covered before in [this article about `@extend`](http://www.sitepoint.com/sass-extend-nobody-told-you/) at SitePoint but I'll sum up here so you can follow along if you're not very comfortable with Sass yet.
 
@@ -30,7 +29,7 @@ And *this* is a huge issue. Fortunately, this has to be the most expected featur
 
 Meanwhile, this is why Ken didn't use placeholders and stuck to mixins. However from my experience, it's not very common to have to include a mixin/extend a placeholder at a very specific breakpoint and not the others. Usually, rules scoped into mixins/placeholders are the core of the element they are applied to, meaning they should be there in all circumstancies. So I decided to find a solution.
 
-## Mixin both mixin and placeholder 
+## Mixin both mixin and placeholder
 
 See what I did? With the title? "Mixin".. Because it's like... Nevermind. I opened a SassMeister gist and started playing around to see if I could come up with a solution. First of all, what I ended up with is not unique. People have done it before me; and I remember seeing frameworks using it already.
 
@@ -61,7 +60,7 @@ Okay, that looks nasty. Here is what we do: first we define the `clear` mixin. T
 
 Then in the mixin core, we check whether or not `$extend` is set to `true`. If it is, then we extend the placeholder. If it is not, we dump the CSS code as a regular mixin would do.
 
-Out of the mixin, we define the placeholder `%clear`. To avoid repeating the CSS code in the placeholder, we only have to include the mixin by setting `$extend` to false. This will dump the CSS code in the placeholder's core. 
+Out of the mixin, we define the placeholder `%clear`. To avoid repeating the CSS code in the placeholder, we only have to include the mixin by setting `$extend` to false. This will dump the CSS code in the placeholder's core.
 
 Here is a boilerplate to code your own:
 
@@ -80,7 +79,7 @@ Here is a boilerplate to code your own:
 }
 ```
 
-## Using it 
+## Using it
 
 There it is. Now let's try it:
 
@@ -131,7 +130,7 @@ This is exactly the issue we are trying to work around. Now, thanks to the way w
 
 No more error! The code is being output as usual because in this case, we are not extending a placeholder anymore (which would produce an error) but actually dumping CSS rules like a regular mixin.
 
-## Final thoughts 
+## Final thoughts
 
 It's a shame we have to hack around the syntax in order to get the best from Sass placeholders. Hopefully cross-scope extending will save us from doing such nasty things whenever it comes live.
 

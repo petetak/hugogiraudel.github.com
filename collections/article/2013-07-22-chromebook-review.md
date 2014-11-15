@@ -9,6 +9,8 @@ summary: false
 title: "Chromebook review"
 ---
 
+> **Edit (2014/11/16):** I no longer own a Chromebook.
+
 As you may know already, I recently bought a **Samsung Chromebook**. Since it is a fairly new computer and reviews can be quite rare, I thought it would be a good idea to give you my feeling after a couple of weeks of daily use.
 
 Please note I may do a lot of comparisons with both a MacBook Pro since my girlfriend has one, a [MacBook old generation](http://images.appleinsider.com/mb-081009.jpg) since it's the laptop I had before.
@@ -87,7 +89,7 @@ However trible-finger swipe doesn't go back in history like on a MacBook Pro; in
 
 This is actually cool but kind of disturbing when you have a MBP background. In a way, it makes sense since there are *"backward"* and *"forward"* keys on the keyboard.
 
-In any case, the surface is not only **smooth and pleasant**, but also quite large. It has to be the best trackpad I ever had on a not-Apple laptop. 
+In any case, the surface is not only **smooth and pleasant**, but also quite large. It has to be the best trackpad I ever had on a not-Apple laptop.
 
 ### Connectivity
 

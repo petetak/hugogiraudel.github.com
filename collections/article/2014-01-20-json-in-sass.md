@@ -9,6 +9,8 @@ summary: false
 title: "SassyJSON: Talk to the browser!"
 ---
 
+> **Edit (2014/11/16):** please, don't use this in a live project. If you come up with a case where you need to parse/encode JSON in Sass, consider having a Ruby/C/whatever helper function for this.
+
 If you are a reader of CSS-Tricks, you might have come across this article a while back about [making Sass talk to JavaScript with JSON](http://css-tricks.com/making-sass-talk-to-javascript-with-json/). The main idea behind this write up is to provide a way for JavaScript to access content from the stylesheet (a.k.a. CSS).
 
 While the idea is solid, the realization is very simple. There was no CSS magic behind it at all. Les James (the author) manually wrote some [JSON](http://json.org/) in the `content` property of body's `::before` pseudo-element, like this:
@@ -22,7 +24,7 @@ body::before {
 
 Well, you have to tell it is actually kind of cool to be able to do so, right? This is neat! Well fasten your belt guys because [Fabrice Weinberg](https://twitter.com/fweinb) and I pushed this to an upper level.
 
-## Introducing SassyJSON 
+## Introducing SassyJSON
 
 Fabrice and I recently released [SassyJSON](https://github.com/HugoGiraudel/SassyJSON), a Sass-powered API to communicate with JavaScript through JSON. Basically it's `json-decode` and `json-encode` in Sass.
 
@@ -30,7 +32,7 @@ Fabrice and I recently released [SassyJSON](https://github.com/HugoGiraudel/Sass
 
 On my side, I already found a usecase. You may know [Bootcamp](https://github.com/thejameskyle/bootcamp), a Jasmine-like testing framework made in Sass for Sass by [James Kyle](https://twitter.com/thejameskyle) (with a Grunt port). I am using Bootcamp for [SassyLists](https://github.com/Team-Sass/SassyLists). I am using Bootcamp for [SassyMatrix](https://github.com/HugoGiraudel/SassyMatrix). We are using Bootcamp for [SassyJSON](https://github.com/HugoGiraudel/SassyJSON). This makes sure our Sass code is clean and efficient.
 
-Back to my point: Bootcamp 2 (work in progress) [will use maps](https://github.com/thejameskyle/bootcamp/issues/75#issuecomment-32131963) to handle test results. Encoding this map to JSON makes it easy to parse it with JavaScript in order to make a real page for tests result, kind of like Jasmine SpecRunner. This is cool. Picture it guys: 
+Back to my point: Bootcamp 2 (work in progress) [will use maps](https://github.com/thejameskyle/bootcamp/issues/75#issuecomment-32131963) to handle test results. Encoding this map to JSON makes it easy to parse it with JavaScript in order to make a real page for tests result, kind of like Jasmine SpecRunner. This is cool. Picture it guys:
 
 1. You write a Sass library
 2. You write Jasmine-like tests for your library
@@ -39,7 +41,7 @@ Back to my point: Bootcamp 2 (work in progress) [will use maps](https://github.c
 
 How awesome is that?
 
-## Sass to JSON 
+## Sass to JSON
 
 Writing the `json-encode` part has been very easy to do. It took us less than an hour to have everything set up. We are able to encode properly any Sass type to JSON, including lists and maps. We have a `json-encode` function delaying the encoding to type-specific *private* functions like `_json-encode--string`, `_json-encode--list` thanks to the brand new `call` function from Sass 3.3:
 
@@ -48,7 +50,7 @@ Writing the `json-encode` part has been very easy to do. It took us less than an
   $type: type-of($value);                            /* 1 */
   @if function_exists('_json-encode--#{$type}') {    /* 2 */
     @return call('_json-encode--#{$type}', $value);  /* 3 */
-  } 
+  }
   @warn "Unknown type for #{$value} (#{$type}).";    /* 4 */
   @return false;                                     /* 4 */
 }
@@ -61,11 +63,11 @@ Here is what's going on:
 3. If it exists, we call the function with `call` by passing it the value as parameter
 4. If it doesn't exist, we warn the user of the issue and return false
 
-We are very glad to be able to do clever stuff like this thanks to Sass 3.3 new functions. It looks both neat and clean, doesn't it? Otherwise all functions are pretty straight-forward. Really, writing the encoding part has been easy as pie. 
+We are very glad to be able to do clever stuff like this thanks to Sass 3.3 new functions. It looks both neat and clean, doesn't it? Otherwise all functions are pretty straight-forward. Really, writing the encoding part has been easy as pie.
 
-### Dumping JSON in CSS 
+### Dumping JSON in CSS
 
-Once you've encoded your Sass into JSON, you'll want to dump the JSON string into the CSS so that you can access it on the other side. There are several possibilities to dump a string into CSS without messing things up: 
+Once you've encoded your Sass into JSON, you'll want to dump the JSON string into the CSS so that you can access it on the other side. There are several possibilities to dump a string into CSS without messing things up:
 
 * using the `content` property of a pseudo-element (`::after` and `::before`)
 * using the `font-family` property, preferably on an used element (e.g. `head`)
@@ -98,7 +100,7 @@ head {
 }
 ```
 
-## JSON to Sass 
+## JSON to Sass
 
 Meanwhile `json-decode` has been a pain in the ass to write, so much that I was very close to give up. Between nested lists, maps, null values, falsy values and hundreds of other tricky cases it is probably one of the hardest thing I've ever done in Sass.
 
@@ -112,7 +114,7 @@ And this is a big deal, because when you use those tiny bits of decoded JSON in 
 
 It took me 3 completely different tries before I come up with something that actually succeeds in parsing JSON. Frankly I was about to give up after the 2nd one because I had absolutely no idea how to do this efficiently. Just in case, I started searching for algorithms like how to build one's own JSON parser or something.
 
-I ended up in an obscure StackOverflow thread pointing to JSON parser implementations by browser vendors. Chrome's one was impossible for me to understand, so I gave a shot at [Mozilla's](https://github.com/mozilla/rhino/blob/master/src/org/mozilla/javascript/json/JsonParser.java) and it looked actually understandable! Mozilla is using Java for their JSON parser, and their code is quite simple to catch up even for someone with absolutely no experience with Java at all (a.k.a. me). 
+I ended up in an obscure StackOverflow thread pointing to JSON parser implementations by browser vendors. Chrome's one was impossible for me to understand, so I gave a shot at [Mozilla's](https://github.com/mozilla/rhino/blob/master/src/org/mozilla/javascript/json/JsonParser.java) and it looked actually understandable! Mozilla is using Java for their JSON parser, and their code is quite simple to catch up even for someone with absolutely no experience with Java at all (a.k.a. me).
 
 <blockquote class="pull-quote--right">Sass and Java are quite different.</blockquote>
 
@@ -132,7 +134,7 @@ As I said, the Fox implemented it as a Java class. Among other things, it means 
 
 This was kind of dirty. I didn't want the parser to rely on global variables and Fabrice wasn't very satisfied either. So I moved everything back into the functions. This wasn't an easy move because suddenly I had to pass the pointer from a function to another, from the beginning of the parsing until the very end. And since most functions do return a result, I had to return a list of two element where the first would be the pointer, and the second would be the actual result: `($pointer, $result)`. Messy but it did the trick.
 
-## What's left? 
+## What's left?
 
 Almost nothing. I am very proud with what we have come up with. The *only* thing missing from our parser is the ability to detect special characters: `\"`, `\\`, `\/`, `\b`, `\f`, `\t` and `\u{{four-hex-digits}}`. We [found a way](https://github.com/HugoGiraudel/SassyJSON/blob/master/src/decode/helpers/_strip-token.scss) for `\n` and `\r` and `\"` but that's pretty much it. I'm not sure we will be able to parse them all, but we need to dig deeper into it before determining.
 
@@ -142,7 +144,7 @@ Also, I'd like to be able to cover every case of invalid JSON with a `false` ret
 
 On the performance side, I suppose we could always do better. We try to make the code as fast as possible but it's not easy when you nest multiple level of functions and loops. I am thinking of using some kind of cache system like [Memo](https://github.com/Team-Sass/Sassy-Maps#memo) for SassyMaps by [Snugug](https://twitter.com/snugug). We'll see.
 
-## Final words 
+## Final words
 
 That's pretty much it folks. We hope you like it! It's been one hell of a thing to do and we're glad to have made it through. Comments and suggestions are obviously welcome!
 

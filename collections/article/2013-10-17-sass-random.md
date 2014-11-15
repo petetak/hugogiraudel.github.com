@@ -9,7 +9,6 @@ summary: false
 title: "Random function with Sass 3.3"
 ---
 
-
 > I wrote this article months ago when I was first experimenting with Sass 3.3 alpha features. I came up with a pretty crazy solution to generate a random number in Sass. However it looks like <a href="">[Sass 3.3 will implement a random function](https://github.com/nex3/sass/pull/968)</a> so we won't need all this stuff. I still publish it for fun. :)
 
 Everything started when I was spying on Sass 3.3 source code on GitHub for my article about the <a href="">[future of Sass](http://davidwalsh.name/future-sass)</a> at David Walsh' Blog. I was sniffing the incoming functions when all of the sudden I came by a <code>unique-id()</code> function.
@@ -52,8 +51,8 @@ My first attempt to get a random number from this string was to remove all alpha
     /* Array of characters to remove */
     $letters : a b c d e f u;
     $result  : unquote("");
-    $string  : unique-id(); 
-  
+    $string  : unique-id();
+
     /* For each character in the given string */
     @for $i from 1 through str-length($string) {
         /* Isolate character */
@@ -69,7 +68,7 @@ My first attempt to get a random number from this string was to remove all alpha
     @if $digits !== 0 and $digits < length($result) {
       $result: str-slice($result, 1, $digits);
     }
-  
+
     /* Return the result */
     @return $result;
 }
@@ -90,7 +89,7 @@ $number: rand(-1); /* Random between 1 and 9999999999999999 */
 
 ## Random, the clean way
 
-Okay, let's say it: the first version I came with is really dirty. That's why I reworked a new version from scratch with the help of <a href="https://twitter.com/l_giraudel">my brother</a>. We even tweaked it in order to make it <em>future-proof</em> for both implementations of the <code>unique-id()</code> function. How cool is that? 
+Okay, let's say it: the first version I came with is really dirty. That's why I reworked a new version from scratch with the help of <a href="https://twitter.com/l_giraudel">my brother</a>. We even tweaked it in order to make it <em>future-proof</em> for both implementations of the <code>unique-id()</code> function. How cool is that?
 
 To put it simple, instead of stripping alpha characters, we take the alphanumeric string and convert it back into an integer. Then, we get a fully random integer we simply have to manipulate around min and max values.
 
@@ -150,22 +149,22 @@ Regarding the <code>charsFromBase()</code> function, here is what it looks like:
 ```scss
 @function charsFromBase($base: 10) {
   /* Binary */
-  @if $base == 2 { 
+  @if $base == 2 {
     @return 0 1;  }
   /* Octal */
-  @if $base == 8 { 
+  @if $base == 8 {
     @return 0 1 2 3 4 5 6 7;  }
   /* Decimal */
   @if $base == 10 {
     @return 0 1 2 3 4 5 6 7 8 9;  }
   /* Hexadecimal */
-  @if $base == 16 { 
+  @if $base == 16 {
     @return 0 1 2 3 4 5 6 7 8 9 a b c d e f;  }
   /* Base 36 */
-  @if $base == 36 { 
+  @if $base == 36 {
     @return 0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z;  }
   /* Base 64 */
-  @if $base == 64 { 
+  @if $base == 64 {
     @return A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z 0 1 2 3 4 5 6 7 8 9 + /;  }
   @return false;
 }

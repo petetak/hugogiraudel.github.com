@@ -9,7 +9,7 @@ summary: false
 title: "How I learnt to like Bootstrap"
 ---
 
-A couple of days ago, I saw a <a href="">[fellow French developer say how much he hates (Twitter) Bootstrap](https://twitter.com/Gandoulfe/status/392640481634422785)</a> for websites on Twitter. And I saw a couple of fellow French developers agree with him.
+A couple of days ago, I saw a [fellow French developer say how much he hates (Twitter) Bootstrap](https://twitter.com/Gandoulfe/status/392640481634422785) for websites on Twitter. And I saw a couple of fellow French developers agree with him.
 
 ![Twitter Bootstrap 3](/images/how-i-learnt-to-like-bootstrap__bootstrap.jpg)
 
@@ -17,7 +17,7 @@ This reminded me that no so long ago, I was a fervent defender of the tell *"Boo
 
 Until a recent project where I finally learnt to like Bootstrap, even for websites. But let's back up a little bit!
 
-## How did we get there 
+## How did we get there
 
 I recently got hired for quite a big project as the only front-end developer in a team of a dozen of developers. The design itself is fairly complex since it involves various layouts, multiple themes, a lot of forms and a bunch of pages. Thankfully, <a href="">[Symfony 2](http://symfony.com/)</a> and its template engine <a href="">[Twig](http://twig.sensiolabs.org/)</a> make it a lot easier to manage but that's not the point.
 
@@ -35,7 +35,7 @@ Since Bootstrap 3 was still in RC back then, it wasn't possible for us to use it
 
 At first, it was a pain in the ass for me to work with Bootstrap. Mostly because I haven't ever used it before. Especially the grid system which didn't feel intuitive to me: `.container`, `.row`, `.col-md-*`? What is this?
 
-But also because I thought my CSS skills were good enough so I don't have to use some framework. And in a way, I was right: I don't need a CSS framework to make a website. Now, even if I don't need it doesn't mean I shouldn't use it at all. 
+But also because I thought my CSS skills were good enough so I don't have to use some framework. And in a way, I was right: I don't need a CSS framework to make a website. Now, even if I don't need it doesn't mean I shouldn't use it at all.
 
 It's been a couple of weeks now we are working on this project and picking Bootstrap has to be one of the wisest moves we have taken so far.
 

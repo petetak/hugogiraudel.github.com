@@ -71,7 +71,7 @@ li {
 <h2>Toggling The Menu <a href="#toggling">#</a></h2>
 <p>We're almost done, all we have to do is to deal with the toggling. We could use a CSS hack for this but this is not the point so we'll just use a tiny bit of JavaScript.</p>
 <p>So we set the <code>max-height</code> of the navigation to <code>0</code> in order to initially hide it, and add a <code>transition</code> so when we toggle the class <code>.show</code> the menu will appear to slide in from the top, pretty basic mobile menu stuff. </p>
-<pre class="language-css"><code>nav {	
+<pre class="language-css"><code>nav {
 	max-height: 0;
 	transition: .6s ease-in-out;
 }
@@ -103,11 +103,11 @@ document.querySelector('.nav-toggle').onclick = function (e) {
   }
 
   ul {
-    width: 100%; 
+    width: 100%;
   }
 
   .nav-toggle {
-    display: none; 
+    display: none;
   }
 }</code></pre>
 </section>

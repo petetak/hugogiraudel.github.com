@@ -10,7 +10,7 @@ summary: false
 title: "Blog changes"
 ---
 
-> **Edit** (January 22nd, 2013): I did a lot of changes after writing this post notably regarding SEO, performances and accessibility. Be sure you read about it!
+> **Edit (2013/01/22):** I did a lot of changes after writing this post notably regarding SEO, performances and accessibility. Be sure you read about it!
 
 Hi guys! It’s now been two months since I launched the new and active version of hugogiraudel.com and I took the opportunity to make a few changes. Let me introduce them, hoping you find them cool. :)
 
@@ -24,7 +24,7 @@ Let's be realistic: the main content is the blog not the 20 lines about me you c
 
 However, I wanted to provide visitors a quick glance at who I am, so I thought it could be a good idea to have a little sidebar to display informations about me. Now, I’m thinking of adding a picture of me in the sidebar; I know a lot of people do that on their blog. Any thought about that?
 
-Another thing that occured to me is that the lines were too long. It may be silly but when lines are too extented, it makes the reading more difficult. Now the main column is narrower, reading an article is easier and de facto nicer. 
+Another thing that occured to me is that the lines were too long. It may be silly but when lines are too extented, it makes the reading more difficult. Now the main column is narrower, reading an article is easier and de facto nicer.
 
 ### Responsive concern
 
@@ -32,7 +32,7 @@ I felt like the old layout lacked of responsiveness. It wasn’t bad since it al
 
 I’m particularly happy with this grid system. It is very easy to set up and as you can see it’s pretty darn efficient!
 
-## Design 
+## Design
 
 I didn’t change many things design speaking except the left border on the whole page to wedge everything from the left. I guess both the header and the footer are better delimited thanks to the solid borders; it’s probably better this way. Also, what do you think of the new Codrops tag on the home page? Pretty nice, right?
 
@@ -55,7 +55,7 @@ I tried to add a few features in order to make your experience nicer. Nothing bi
 * Links to articles on the home page are now paginated in order to make the whole page lighter. Only the last 7 articles will be displayed (including Codrops ones) on the first page. To see older blog posts, you'll have to use the little buttons at the bottom of the screen.
 * You can now link to specific sections inside an article thanks to anchor tags on titles. When you hover a level-2 title (like "Features" or "Performances" for example), you'll see a little # character appearing. Click on it to have a section-specific URL.
 
-## Performances 
+## Performances
 
 <blockquote class="pull-quote-right">I always try to load the page as fast as I can.</blockquote>
 
@@ -77,11 +77,11 @@ First of all, I switched a bunch of my divs to "new" HTML5 elements. So I'm now 
 
 Secondly, I dug a little into ARIA roles. I have to say I didn't know it was such a deep and complex topic, so I may have understand a few things wrong. Anyway, I added a `role=""` attribute to many elements in the site, especially on the home page.
 
-I also gave a few tries to keyboard navigations and I have to say it's really not that bad. If you have a few minutes left, try it on the home page and tell me what you think about it. 
+I also gave a few tries to keyboard navigations and I have to say it's really not that bad. If you have a few minutes left, try it on the home page and tell me what you think about it.
 
 By the way, if some accessibility ninja is passing by and finds something wrong, please be sure to tell me. :)
 
-## SEO 
+## SEO
 
 ### Microdatas
 
@@ -93,8 +93,8 @@ Now if you inspect the sidebar code, you might see some microdatas about me incl
 
 I also edited the [jQuery plugin](https://github.com/wesnolte/Pajinate) I use for pagination on the home page because it was using `.hide()` to hide content from other pages but the current one. And you're not without knowing search engines don't index stuff set to `display: none;`.
 
-So I gathered my courage, opened the file and changed those hide and show methods by a class toggling. This class hides things with CSS, letting search engine index the content. It may sound silly but for a JS douche like me, editing a plugin is a pretty big deal. :D 
+So I gathered my courage, opened the file and changed those hide and show methods by a class toggling. This class hides things with CSS, letting search engine index the content. It may sound silly but for a JS douche like me, editing a plugin is a pretty big deal. :D
 
-## To do 
+## To do
 
 You tell me. If you have any request, comment, advise or any feedback to do, be sure to speak. Thanks a lot.

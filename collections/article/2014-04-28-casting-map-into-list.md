@@ -8,16 +8,17 @@ sassmeister: false
 summary: false
 title: "Casting a map into a list in Sass"
 ---
+
 I have this article ready for about 3 months now but I never found an occasion to release it... until today! This will be quite short but I still wanted to write a little something on the topic anyway. You might have read my [article about SassyCast](http://hugogiraudel.com/2014/01/27/casting-types-in-sass/), a small Compass extension I wrote to convert data types in Sass.
 
 SassyCast making possible to go from any data type to any data type (or almost), it includes a way to cast a map into a list. While the function I wrote was kind of straight forward, [Julien Cabanes showed me a cool little improvement to the function](https://twitter.com/JulienCabanes/status/427920448899538944) on Twitter. I merged his code in SassyCast 1.0.0.
 
-## The old way 
+## The old way
 
-The `to-list` function core is pretty straightforward. If the given value is a map, we iterate over it to create a 2-dimensional list like this: `( "key-1" "value 1", "key-2" "value 20" )`. 
+The `to-list` function core is pretty straightforward. If the given value is a map, we iterate over it to create a 2-dimensional list like this: `( "key-1" "value 1", "key-2" "value 20" )`.
 
 ```scss
-@function to-list($value) { 
+@function to-list($value) {
   @if type-of($value) == map {
     $keys: ();
     $values: ();
@@ -36,7 +37,7 @@ To be a little more precise about what's being done here: we loop through each m
 
 Does the job well.
 
-## The new way 
+## The new way
 
 Julien thought it would be cool to be able to keep only keys, or only values or both (what I've done) so he added an extra parameter to the function accepting either `keys` or `values` or `both`. Every other value would fallback to `both`.
 
@@ -45,7 +46,7 @@ Then depending on the flag, he returns either `$keys` or `$values` or a zip of b
 ```scss
 @function to-list($value, $keep: 'both') {
   $keep: if(index('keys' 'values', $keep), $keep, 'both');
-  
+
   @if type-of($value) == map {
     $keys: ();
     $values: ();
@@ -82,7 +83,7 @@ Literally:
 2. Else if `$keep` is `'values'`, return `$values`
 3. Else return `zip($keys, $values)`
 
-## Final thoughts 
+## Final thoughts
 
 Let's try it with a little example, shall we? First, our map.
 

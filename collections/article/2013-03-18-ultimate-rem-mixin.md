@@ -9,11 +9,15 @@ summary: false
 title: "The ultimate PX/REM mixin"
 ---
 
-> **Update 2014-05-13:** this article is getting old and while it still is perfectly valid, I have kind of changed my mind about this whole px to rem thing. I now use something simpler, like [this](http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/).
+> **Edit (2014/11/16):** I have changed my mind again and no longer use Sass to remify. In most projects, I've noticed it's better to use a postprocessor such as [px_to_rem](https://github.com/songawee/px_to_rem).
+
+<!-- -->
+
+> **Edit (2014/05/13):** this article is getting old and while it still is perfectly valid, I have kind of changed my mind about this whole px to rem thing. I now use something simpler, like [this](http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/).
 
 ## About REM
 
-Everybody loves relative units. They are handy and help us solve daily problems. However the most used one (`em`) presents some issues, especially when it comes to nesting. 
+Everybody loves relative units. They are handy and help us solve daily problems. However the most used one (`em`) presents some issues, especially when it comes to nesting.
 
 As an example, setting both `p` and `li` tags font-size to `1.2em` may seem fine. But if you ever happen to have a paragraph inside a list item, it would result in a font-size 1.44 times (1.2 * 1.2) bigger than parent font-size, and not 1.2 as wished.
 
@@ -64,30 +68,30 @@ html {
 @mixin rem($property, $values) {
   $px : (); /* 3 */
   $rem: (); /* 3 */
-  
+
   @each $value in $values { /* 4 */
-   
+
     @if $value == 0 or $value == auto { /* 5 */
       $px : append($px , $value);
       $rem: append($rem, $value);
     }
-    
-    @else { 
+
+    @else {
       $unit: unit($value);    /* 6 */
       $val: parseInt($value); /* 6 */
-      
+
       @if $unit == "px" {  /* 7 */
         $px : append($px,  $value);
         $rem: append($rem, ($val / 10 + rem));
       }
-      
+
       @if $unit == "rem" { /* 7 */
         $px : append($px,  ($val * 10 + px));
         $rem: append($rem, $value);
       }
     }
   }
-  
+
   @if $px == $rem {     /* 8 */
     #{$property}: $px;  /* 9 */
   } @else {
@@ -95,7 +99,7 @@ html {
     #{$property}: $rem; /* 9 */
   }
 }
-``` 
+```
 
 This may be a bit rough so let me explain it:
 

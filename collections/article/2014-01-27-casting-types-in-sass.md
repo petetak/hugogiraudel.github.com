@@ -9,6 +9,8 @@ summary: false
 title: "SassyCast: type conversion in Sass"
 ---
 
+> **Edit (2014/11/16):** remember that type casting is often a symptom of poorly designed code. This should probably stay an experiment.
+
 To *cast* an entity means changing its data type to another one. This very particular thing so common in all programming languages can turn out to be a huge pain in the (S)ass. Mostly because Sass is not a programming language but that's not the point.
 
 Something so simple as changing a stringified number into an integer is actually quite difficult to do in Sass, yet sometimes you might find yourself in the need of doing that (which means there is probably something wrong somewhere in your code by the way).
@@ -27,7 +29,7 @@ Let's see how we can cast a value to another data type.
 
 > Update: I just released [SassyCast](https://github.com/HugoGiraudel/SassyCast), also available as an eponym [Compass extension](http://rubygems.org/gems/SassyCast).
 
-## To string 
+## To string
 
 Casting to a string has to be the easiest type of all thanks to the brand new `inspect` function from Sass 3.3 which does exactly that: casting to string.
 
@@ -44,13 +46,13 @@ Another way to cast to string without quoting is adding an unquoted empty string
 * it doesn't work with `null`: throws `Invalid null operation: "null plus """.`
 * it doesn't make maps displayble as CSS values: still throws `"(a: 1, b: 2) isn't a valid CSS value."`
 
-## To number 
+## To number
 
-I have already written an article about how to convert a stringified number into an actual number, even if it has a CSS unit in [this article](http://hugogiraudel.com/2014/01/15/sass-string-to-number/). 
+I have already written an article about how to convert a stringified number into an actual number, even if it has a CSS unit in [this article](http://hugogiraudel.com/2014/01/15/sass-string-to-number/).
 
-I feel like the function could be improved to accept a boolean to be converted into `0` or `1` and things like that but that's mostly optimization at this point. 
+I feel like the function could be improved to accept a boolean to be converted into `0` or `1` and things like that but that's mostly optimization at this point.
 
-## To bool 
+## To bool
 
 Converting a value to a boolean is both simple and tricky. On the whole, the operation is quite easy because Sass does most of the work by evaluating a value to a boolean when in an `@if`/`@else if` directive. Meanwhile, there are some values that Sass considers as `true` while they are generally refered as `false`.
 
@@ -77,15 +79,15 @@ to-bool(0 1 2)       // true
 to-bool((a: 1, b: 2) // true
 ```
 
-## To color 
+## To color
 
-We needed to be able to convert a stringified color into a real color for [SassyJSON]() and we succeeded in doing so without too much troubles. Since we can't build an hexadecimal color from the `#` symbol (because it would result in a string), we went with the `rgb()` for hexadecimal colors. 
+We needed to be able to convert a stringified color into a real color for [SassyJSON]() and we succeeded in doing so without too much troubles. Since we can't build an hexadecimal color from the `#` symbol (because it would result in a string), we went with the `rgb()` for hexadecimal colors.
 
 Basically we parse the triplet, convert each of its three parts from hexadecimal to decimal and run them through the `rgb` function to have a color. Not very short but does the trick!
 
 I'll let you have a look at [the files](https://github.com/HugoGiraudel/SassyJSON/tree/master/stylesheets/decode/helpers/color) from our repo if you're interested in casting a string to a color.
 
-## To list 
+## To list
 
 Technically, Sass treats all values as single-item lists so in a way, your value is already a list even if it doesn't have an explicit `list` type. Indeed, you can test its length with `length`, add new values to it with `append` and so on. That being said, if you still want to have a `list` data type anyway there is a very simple way in Sass 3.3 to do so:
 
@@ -105,7 +107,7 @@ If you are running Sass 3.2 and still want to create a singleton, there is a way
 }
 ```
 
-## To map 
+## To map
 
 Converting a single value to a map doesn't make much sense since a map is a key/value pair while a value is, well, a value. So in order to cast a value to map, we would have to invent a key to associate the value to. In a matter of simplicity, we can go with `1` but is it obvious? We could also use the `unique-id()` function or something. Anyway, here is the main picture:
 
@@ -115,7 +117,7 @@ Converting a single value to a map doesn't make much sense since a map is a key/
 }
 ```
 
-Feel free to replace `1` with whatever makes you feel happy. 
+Feel free to replace `1` with whatever makes you feel happy.
 
 ```scss
 to-map("string") // (1: "string")
@@ -123,11 +125,11 @@ to-map(1337)     // (1: 1337)
 
 ```
 
-## To null 
+## To null
 
 Well, I don't think there is such a thing as *casting to null*. In JavaScript, `typeof null` returns an object (...) but in Sass there is a `null` type which has a single value bound to it: `null`. So casting to null is the same as returning `null`. Pointless.
 
-## Final words 
+## Final words
 
 While we can find hacks and tricks to convert values from one type to another, I'd advise against doing so. By doing this, you are moving too much logic inside your stylesheet. More importantly, there is no good reason to cast a value in most cases.
 

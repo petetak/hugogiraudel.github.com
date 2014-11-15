@@ -9,11 +9,13 @@ summary: false
 title: "String replacement function in Sass"
 ---
 
+> **Edit (2014/11/16):** here is an [updated, more powerful version](http://sassmeister.com/gist/1b4f2da5527830088e4d).
+
 The other day, I caught up a discussion on Twitter where famous French developer [Nicolas Hoffman asked for a way to replace a string into another string in Sass](https://twitter.com/Nico3333fr/status/420557471745179648). He quickly got some answers to dig into string functions coming in Sass 3.3, but I know playing around such tools can be quite time consuming for someone who's not like super comfortable with the syntax.
 
 So I thought I'd give it ago. Since I managed to have a decent result in a matter of minutes and I really enjoyed working on this little thing, here is an explanation of [the code](http://sassmeister.com/gist/8300738).
 
-## A quick leveling-up with string functions 
+## A quick leveling-up with string functions
 
 We will need a couple of string functions that are not currently available in Sass but will in Sass 3.3 (which should be released in January according to [this post](https://gist.github.com/nex3/8050187) by Nex3).
 
@@ -25,7 +27,7 @@ We will need a couple of string functions that are not currently available in Sa
 
 You can find the Ruby source code for those functions in [this file](https://github.com/chriseppstein/sass/blob/string_functions/lib/sass/script/functions.rb). I don't do any Ruby, but the code is well documented so it's really easy to understand what's going on.
 
-## Building the `str-replace` function 
+## Building the `str-replace` function
 
 Let's start with the skeleton:
 
@@ -33,7 +35,7 @@ Let's start with the skeleton:
 @function str-replace($string, $old, $new) {
   // Doing magic
   @return $string;
-  
+
 }
 ```
 
@@ -49,7 +51,7 @@ First things first, we need to check if the `$string` actually contains `$old`. 
 }
 ```
 
-Note how we also make sure the `$new` string is different from the `$old` one. Obviously there is nothing to replace if both are the same! 
+Note how we also make sure the `$new` string is different from the `$old` one. Obviously there is nothing to replace if both are the same!
 Now let's dig into the core of our function. The first thing we need to do is to remove the `$old` string from the `$string`. To do this, we don't have any other choice than recreating a new string by looping through each character of the string and not appending the one from `$old`. Because performance matters, we can start looping from `$index` instead of `1`.
 
 ```scss
@@ -63,7 +65,7 @@ $new-string: quote(str-slice($string, 1, $index - 1));
 
 So we start by initializing the `$new-string` with the beginning of the `$string`, from the first character to the one right before `$index` (the start of `$old`). Then we loop through each character in the string, and append them to the new string only if they are not part of the `$old` occurrence.
 
-Now that we've remove the old string, we need to append the new one. Couldn't be easier with the `str-insert` function. 
+Now that we've remove the old string, we need to append the new one. Couldn't be easier with the `str-insert` function.
 
 ```scss
 $new-string: str-insert($new-string, $new, $index);
@@ -77,7 +79,7 @@ Done. Now what if there were multiple occurrences of `$old` in the string? The e
 
 The function will run once again. If `$old` is found again, then it will deal with it as we just did for the first occurrence and go recursive again until there is no more occurrence of `$old` in the string. And when there is none, we don't satisfy the `@if $index > 0` anymore so we just return `$string`. End of story.
 
-## Dealing with errors 
+## Dealing with errors
 
 When you build such functions, it is always nice to handle edge cases like wrong arguments or things like this. You might know that the function requires a string for each argument to work but the end user might do something weird with it, like trying to replace a string by a number or something.
 
@@ -91,7 +93,7 @@ You usually put those kind of verifications at the top of the function in order 
     @warn "One of the 3 arguments is not a string.";
     @return $string;
   }
-  
+
   // Doing magic
 }
 ```
@@ -106,12 +108,12 @@ Because of the way we handle this function, we go recursive. That means if you i
     @warn "The string to be replaced is contained in the new string. Infinite recursion avoided.";
     @return $string;
   }
-  
+
   // Doing magic
 }
 ```
 
-## Dealing with case sensitivity 
+## Dealing with case sensitivity
 
 Last thing we can do to make our function even better is dealing with giving a way to enable case sensitivity. Simplest way to do so is to add another parameter to the function, let's say a `$case-sensitive` boolean. Since `str-index` is case-sensitive by default, we'll set `$case-sensitive` to true.
 
@@ -119,14 +121,14 @@ What we could do to allow case insentivity (when `$case-sensitive` is set to `fa
 
 ```scss
 $index: if(
-  not $case-sensitive, 
-  str-index(to-lower-case($string), to-lower-case($old)),  
+  not $case-sensitive,
+  str-index(to-lower-case($string), to-lower-case($old)),
   str-index($string, $old)
 );
 ```
 
 This doesn't change the initial string at all, it just performs a search without being case sensitive. Easy peasy!
 
-## Final words 
+## Final words
 
 To be perfectly honest with you, I don't yet have a use-case for this but I am sure there will be. String replacement is kind of a key feature as soon as you start playing with strings so if you ever come up with the need to replace a string into another string by another another string; think of me and tell me what was the usecase. ;)
