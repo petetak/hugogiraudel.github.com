@@ -8,7 +8,7 @@ preview: false
 published: true
 sassmeister: false
 summary: false
-title: "Feedback on dotCSS"
+title: "Feedback on dotCSS 2014"
 ---
 
 I have been invited to speak at the very first [dotCSS](http://dotcss.eu) in Paris on November 14th, as part of a beautiful lineup of incredible speakers and not less than 400 attendees. It was a truely great experience, hence a little article to sum up the journey.
@@ -62,7 +62,7 @@ After a second break, [Nicolas Gallagher](https://twitter.com/necolas) presented
 
 The inventor of CSS, [Bert Bos](http://en.wikipedia.org/wiki/Bert_Bos) came next with a presentation about typography on the web, and how HTML and CSS are currently poorly suited for it. What's funny is that Bert actually ended up (implicitly) asking the audience how they would do it, rather than coming and saying "this is how it should be done". Food for thoughts.
 
-Last but not least, [Ana Tudor](https://twitter.com/thebabydino) gave a talk about shapes and CSS and Sass and geometry and craziness. Her scientific brain never fails to amuse me, and as always, her presentation was very impressive.
+Last but not least, [Ana Tudor](https://twitter.com/thebabydino) gave a talk about [shapes and CSS and Sass and geometry](http://codepen.io/thebabydino/full/1dac5e91f697438ea420d6f5b429c253) and craziness. Her scientific brain never fails to amuse me, and as always, her presentation was very impressive.
 
 ## About my talk
 
