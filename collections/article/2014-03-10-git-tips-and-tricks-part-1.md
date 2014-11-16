@@ -11,9 +11,11 @@ summary: false
 title: "Git tips and tricks - Part 1"
 ---
 
-<p class="explanation">Hey guys! The following is the first post of a series written by my dear brother Loïc, Git expert at Best Of Media (Tom's Guide & Tom's Hardware). I'll release the next parts in the next few weeks, so be sure to stay tuned for more Git awesomeness!</p>
+> **Edit (2014/03/17):** Part 2 is out! Go check [it](http://hugogiraudel.com/2014/03/17/git-tips-and-tricks-part-2/).
 
-> **Update 2014-03-17:** Part 2 is out! Go check [it](http://hugogiraudel.com/2014/03/17/git-tips-and-tricks-part-2/).
+<!-- -->
+
+> Hey guys! The following is the first post of a series written by my dear brother Loïc, Git expert at Best Of Media (Tom's Guide & Tom's Hardware). I'll release the next parts in the next few weeks, so be sure to stay tuned for more Git awesomeness!
 
 Hi guys! Today, I'm gonna share with you some Git tips & tricks I've already shared with my workmates at Best Of Media. But before even starting let's never forget the more important laws of Git.
 
@@ -25,7 +27,7 @@ If you see a bug while you're working on a new functionality, try to fix this bu
 
 Ok, now let's start with the real tips & tricks...
 
-## Use an awesome prompt 
+## Use an awesome prompt
 
 <blockquote class="pull-quote--right">Each commit should leave the branch stable.</blockquote>
 
@@ -54,7 +56,7 @@ To install this prompt in a linux environment, just download it somewhere and up
 
 That's it. Just re-open your terminal and go to a Git project directory.
 
-## Find a commit 
+## Find a commit
 
 This is the very basic when working with Git. Have you ever found yourself asking:
 
@@ -105,7 +107,7 @@ df9b1c21 (Seb  2013-10-11 11:50:08 +0200  9)         vendor: [
 
 It's possible to limit the output to specific lines with the parameter `-L`: `git blame -L 10,20` will only output lines 10 to 20.
 
-## Improve diff output 
+## Improve diff output
 
 `git diff` is one of the most used Git command before adding changes to the stage area to avoid pushing mistakes to the repository. The diff command can be customized to avoid some inconveniences.
 
@@ -222,7 +224,7 @@ index b2185a2..887387f 100755
 
 It's now easier to catch up with the changes: I've replaced the test wrapping my Ajax call by a 3-lines test checking right before, which reduces the indentation level of the Ajax call.
 
-## Final thoughts 
+## Final thoughts
 
 I hope those little tricks will help. In the next part, I'll continue with other small smart tricks before tackling some advanced Fit useful features.
 

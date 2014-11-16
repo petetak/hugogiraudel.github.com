@@ -11,13 +11,15 @@ summary: false
 title: "Git tips and tricks - Part 2"
 ---
 
-<p class="explanation">Hi dear folks! This is the 2nd part of the <em>Git Tips & Tricks</em> series from Loïc Giraudel. If you missed the first post, be sure to <a href="http://hugogiraudel.com/2014/03/10/git-tips-and-tricks-part-1/">give it a read</a>! And now fasten your belts folks, because this is some serious Git fu!</p>
+> **Edit (2014/03/24):** Part 3 is out! Go check [it](http://hugogiraudel.com/2014/03/24/git-tips-and-tricks-part-3/).
 
-> **Update 2014-03-24:** Part 3 is out! Go check [it](http://hugogiraudel.com/2014/03/24/git-tips-and-tricks-part-3/).
+<!-- -->
+
+> Hi dear folks! This is the 2nd part of the *Git Tips & Tricks* series from Loïc Giraudel. If you missed the first post, be sure to [give it a read](http://hugogiraudel.com/2014/03/10/git-tips-and-tricks-part-1/)! And now fasten your belts folks, because this is some serious Git fu!
 
 Hey guys! I hope you enjoyed the first part of the series. In this one, I will introduce you even more tricks to improve the diff output, create some useful aliases and master (no pun intended) mandatory commands to be able to approach advanced Git concepts and commands. Ready?
 
-## Improve diff output 
+## Improve diff output
 
 ### Avoid ^M in diff
 
@@ -49,7 +51,7 @@ To avoid adding the flag on every single diff command, you can make it a default
 
 <pre class="language-git"><code>$ git config --global --bool diff.noprefix true</code></pre>
 
-## Create your own aliases 
+## Create your own aliases
 
 Do you know that you can create your own Git aliases ?
 
@@ -99,13 +101,13 @@ It can return the relative path to go back to project root:
 <pre class="language-git"><code>/home/workspace/myProject/test/phpunit/apps/sso/lib/action $ git rev-parse --show-cdup
 ../../../../../../</code></pre>
 
-## Change default message editor 
+## Change default message editor
 
 In Unix system, the default commit message editor is VI. To use your favorite editor, edit the core.editor option:
 
 <pre class="language-git"><code>$ git config --global core.editor "~/Sublime\ Text\ 3/sublime_text -w"</code></pre>
 
-## Track a remote branch 
+## Track a remote branch
 
 Large scale projects have many Git branches: developers create new ones every day, do many merges, switch to branches created by workmates, co-develop features in shared branches and so on.
 
@@ -157,7 +159,7 @@ $ git status
 # On branch foo
 nothing to commit, working directory clean</code></pre>
 
-## How to delete a remote branch 
+## How to delete a remote branch
 
 It's quite easy to delete a local branch with the `-d` and `-D` parameters of `git branch` command, but the syntax to delete a remote branch is not so instinctive. Actually you don't really *delete* a remote branch per se; instead you push *nothing* to an existing destination.
 
@@ -170,7 +172,7 @@ Luckily, since Git 1.7.0, there is an easier syntax to do this:
 
 <pre class="language-git"><code>$ git push origin --delete myBranch</code></pre>
 
-## Use a Git message template 
+## Use a Git message template
 
 <blockquote class="pull-quote--right">Using a message template for Git commits is a good practice.</blockquote>
 
@@ -261,7 +263,7 @@ $ git commit -m 'This is another feature'
 $ git log -1 --oneline
 4d169f5 [my-local-branch] This is another feature</code></pre>
 
-## Split a file modification into two commits 
+## Split a file modification into two commits
 
 Now we've covered the basics, let's move on to some advanced Git techniques. Those tricks get useful when you have a complex Git environment which can require:
 
@@ -408,7 +410,7 @@ Date:   Mon Feb 17 10:58:11 2014 +0100
 
     Initial commit</code></pre>
 
-## Pick a commit from another branch 
+## Pick a commit from another branch
 
 It's sometimes useful to pick a commit from another branch to add it in the current branch.
 
@@ -422,7 +424,7 @@ This command has some useful parameters:
 * `-x` to add a line "Cherry-picked commit" in the commit message
 * `--no-commit` or `-n` to apply the commit changes in the unstaged area (unstead of creating a commit in the branch)
 
-## Final thoughts 
+## Final thoughts
 
 That's it for today folks! In the next parts, we'll deal with the following subjects:
 
