@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	
+		
+	
+
+<meta charset="utf-8">
+
+
+<meta name="robots" content="index,follow"> 
+<meta name="revisit-after" content="1 days"> 
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Hugo Giraudel"> 
+<meta name="description" content="">
+
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss" />
+
+<link rel="icon" href="/favicon.png">
+<!--[if IE]><link rel="shortcut icon" href="/favicon.ico"><![endif]-->
+
+<link rel="stylesheet" href="/assets/css/main.min.css" />
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<title>Use lengths, not strings</title>
+</head>   
+<body>
+<div class="wrapper">
+	<header class="header" role="banner">
+	
+	<h1 class="site-title"><a href="/">Hugo<span>Giraudel</span>.com</a></h1>
+
+	<div class="avatar">
+		<img src="/images/hugo-giraudel.jpg" alt="Photo Hugo Giraudel" />
+	</div>
+
+</header>
+
+	<article class="main" role="main"> 
+	
+	 
+		<h1>Use lengths, not strings</h1> 
+	
+
+	
+		<p class="date">September 03, 2013
+		
+		</p> 
+	
+
+	
+	
+	
+<p>This is something I see in a lot of Sass demos and tutorials. People tend to use strings instead of actual lengths, and if it’s okay in most cases, there are a couple of situations when it is not anymore.</p>
+
+<p>But first, let me introduce the topic because you probably wonder what the hell I am talking about. Nothing better than a little example for this.</p>
+
+<pre><code class="language-scss">$value: 13.37;
+$length: $value + em;
+    
+whatever {
+    padding-top: $length;
+}
+</code></pre>
+
+<p>I want to play a game… This example: working or not working?</p>
+
+<p>Well obviously, it works like a charm. That’s probably why you can see it so much in so many Sass demos.</p>
+
+<h2>The problem</h2>
+
+<p>Then you ask <em>“if it works, why bother?”</em>. That’s actually a very fair question. Let’s continue our example, shall we? What if we apply — let’s say — the <code>round()</code> function to our length?</p>
+
+<pre><code class="language-scss">$rounded-length: round($length);
+</code></pre>
+
+<p>Aaaaaand… bummer.</p>
+
+<blockquote>
+  <p>“13.37em” is not a number for ‘round’.</p>
+</blockquote>
+
+<p>Same problem with any function requiring a number (lengths are numbers in Sass) like <code>abs()</code>, <code>ceil()</code>, <code>floor()</code>, <code>min()</code>… Even worse! The <code>unit()</code> function will also fail to return the unit. </p>
+
+<p>This is because <strong>there is no unit</strong> since it’s now a string. When you append a string (in this case <em>em</em>) to a number (<em>13.37</em>), you implicitly cast it into a string.</p>
+
+<p>Indeed, if you check the type of your variable with the <code>type-of()</code> function, you’ll see it’s not a number but a string.</p>
+
+<pre><code class="language-scss">type-of($length); // string
+</code></pre>
+
+<h2>The solution</h2>
+
+<p>There is a very simple solution. Instead of appending the unit, simply multiply the number by 1 unit. For example, <em>3 apples</em> is strictly equivalent to <em>3 times 1 apple</em>, right? Same thing.</p>
+
+<pre><code class="language-scss">$value: 13.37;
+$length: $value * 1em;
+    
+whatever {
+    padding-top: round($length); // 13em
+}
+</code></pre>
+
+<p>Problem solved! Please, use lengths when you need to, not strings.</p>
+
+
+	
+		<div id="disqus_thread"></div> 
+	
+
+	</article>
+
+	<aside class="sidebar" role="complementary">
+
+	<div itemscope itemtype="http://schema.org/Person">
+	<h1 class="visually-hidden">About me</h1>
+	<p>Hi! I'm <span itemprop="name">Hugo</span>, a <strong itemprop="jobTitle">front-end developer</strong> from <span itemprop="nationality">France</span>. CSS Goblin, Sass hacker, margin psycho.</p>
+	<p>I am writing for <a href="http://www.sitepoint.com/author/hgiraudel/">SitePoint</a>, <a href="http://tutorials.tutsplus.com/authors/hugo-giraudel">Tuts+</a>, <a href="http://web-design-weekly.com/2014/07/08/sassylists-moving-2-x/">Web Design Weekly</a>, <a href="http://thesassway.com/hugo-giraudel">The Sass Way</a>, <a href="http://tympanus.com/codrops/author/hugogiraudel" itemprop="url">Codrops</a>, <a href="http://css-tricks.com">CSS-tricks</a>, <a href="http://mixture.io/blog/jekyll-mixture/">Mixture</a> and <a href="http://davidwalsh.name">David Walsh' blog</a>.</p>
+	<p>Also I'm maintainer of <a href="http://sassdoc.com">SassDoc</a>, curator of <a href="http://browserhacks.com" itemprop="url" target="blank" title="Browserhacks">Browserhacks</a> and author of a lot of <a href="https://github.com/HugoGiraudel/awesome-sass">Sass stuff</a>.</p>
+	<p>You can catch me on <a href="http://twitter.com/HugoGiraudel" itemprop="url">Twitter</a>, or have a look at my projects on <a href="https://github.com/HugoGiraudel">GitHub</a>.</p>
+</div>
+<div id="carbonads-container">
+	<div class="carbonad">
+		<div id="azcarbon"></div>
+	</div>
+</div>
+</aside>
+	<footer class="footer" role="contentinfo">
+    <ul class="footer__nav">
+        <li><a href="https://plus.google.com/u/0/101697878480386449961?rel=author" target="blank">Google+</a></li>
+        <li><a href="https://github.com/HugoGiraudel" target="blank">GitHub</a></li>
+        <li><a href="/resume">Resume</a></li>
+        <li><a href="/rss">RSS</a></li>
+        <li><a href="http://twitter.com/HugoGiraudel" target="blank">Twitter</a></li>
+    </ul>
+    <p>&copy;&nbsp;2014 Hugo Giraudel. Built with <a href="http://mixture.io/">Mixture</a>. Hosted on <a href="https://github.com/HugoGiraudel/hugogiraudel.github.com">GitHub</a>.</p>
+</footer>
+</div>
+
+<script src="/assets/js/main.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var app = new App({
+    codepen: false,
+    sassmeister: false,
+    tableOfContent: false,
+    comments: true,
+    layout: 'article',
+    disqus: {
+      title: "Use lengths, not strings",
+      url: window.location.href,
+      name: 'hugogiraudel'
+    },
+    tracking: true,
+    ad: true
+  });
+});
+</script>
+</body>
+</html>

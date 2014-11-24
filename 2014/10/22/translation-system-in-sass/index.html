@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	
+		
+	
+
+<meta charset="utf-8">
+
+
+<meta name="robots" content="index,follow"> 
+<meta name="revisit-after" content="1 days"> 
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Hugo Giraudel"> 
+<meta name="description" content="">
+
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss" />
+
+<link rel="icon" href="/favicon.png">
+<!--[if IE]><link rel="shortcut icon" href="/favicon.ico"><![endif]-->
+
+<link rel="stylesheet" href="/assets/css/main.min.css" />
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<title>Translation system in Sass</title>
+</head>   
+<body>
+<div class="wrapper">
+	<header class="header" role="banner">
+	
+	<h1 class="site-title"><a href="/">Hugo<span>Giraudel</span>.com</a></h1>
+
+	<div class="avatar">
+		<img src="/images/hugo-giraudel.jpg" alt="Photo Hugo Giraudel" />
+	</div>
+
+</header>
+
+	<article class="main" role="main"> 
+	
+	 
+		<h1>Translation system in Sass</h1> 
+	
+
+	
+		<p class="date">October 22, 2014
+		
+		</p> 
+	
+
+	
+	
+	
+<p>Lately, I have been actively contributing to <a href="https://github.com/ffoodd/a11y.css">a11y.css</a> project. If you don’t know it yet and happen to be interested in accessibility, I highly recommand you give it a glance. It is a massive work from French developer and accessibility activist <a href="https://twitter.com/ffoodd_fr">Gaël Poupard</a>.</p>
+
+<p>As far as I am concerned, I am no accessibility expert, so I always find this kind of initiatives very helpful. To briefly introduce a11y.css, it is a stylesheet that you can include in any web page to highlight possible mistakes, errors and improvements. Each notification comes with a message (displayed with pseudo-elements) explaining what’s going on and what should be done. Cool stuff, really.</p>
+
+<p>I thought it was too bad to keep it exclusively in French so I opened <a href="https://github.com/ffoodd/a11y.css/issues/13">an issue</a> to suggest a Sass solution (project was already running on Sass anyway) to provide messages in different languages. I am very happy with what I have come up hence this article to explain how I did it.</p>
+
+<h2>Introducing the API</h2>
+
+<p>The goal was not to switch the whole thing to English. I think Gaël wanted to keep French and in the mean time provide an English version. So the idea was to find a way to generate a stylesheet per language. Feel like adding Spanish? Go for it, should be a breeze.</p>
+
+<p>My idea was to have a <code>.scss</code> file per language, following a pattern like <code>a11y-&lt;language&gt;.scss</code> for convenience that gets compiled into a <code>a11y-&lt;language&gt;.css</code> file. This file shouldn’t contain much. Actually only:</p>
+
+<ol>
+  <li>defining <code>@charset</code> (obviously to <code>UTF-8</code>);</li>
+  <li>importing utilities (translation map, mixins, configuration…);</li>
+  <li>defining the language to use (as of today <code>fr</code> or <code>en</code>);</li>
+  <li>importing CSS styles.</li>
+</ol>
+
+<p>For instance, <code>a11y-en.scss</code> would look like:</p>
+
+<pre><code class="language-scss">@charset "UTF-8";
+
+@import "utils/all";
+@include set-locale("en");
+@import "a11y/a11y";
+</code></pre>
+
+<p>Looking pretty neat, right?</p>
+
+<h2>Setting the language</h2>
+
+<p>You’ve seen from the previous code snippet that we have a <code>set-locale</code> mixin accepting a language (shortcut) as a parameter. Let’s see how it works:</p>
+
+<pre><code class="language-scss">/// Defines the language used by `a11y.css`. For now, only `fr` and `en` allowed.
+/// @group languages
+/// @param {String} $language
+/// @output Nothing
+/// @example scss - Defines the language to `fr`.
+///  @include set-locale('fr');
+@mixin set-locale($language) {
+  $supported-languages: 'fr', 'en';
+  $language: to-lower-case($language);
+
+  @if not index($supported-languages, $language) {
+    @error "Language `#{$language}` is not supported. Pull request welcome!";
+  }
+
+  $language: $language !global;
+}
+</code></pre>
+
+<p>There is very little done here. First, it makes sure the given language is supported. For now, only <code>fr</code> and <code>en</code> are. If it is not supported, it throws an error. Else, it creates a global variable called <code>$language</code> containing the language (<code>fr</code> or <code>en</code>). Easy, let’s move on.</p>
+
+<h2>Gathering all messages within a map</h2>
+
+<p>The point of this system is to gather all messages within a big Sass map. Thus, we don’t have dozens of strings scattered across stylesheets. Every single message, no matter the language, lives inside the <code>$messages</code> map. Then, we’ll have an accessor (a getter function) to retrieve a message from this map depending on the global language.</p>
+
+<p>Gaël has divided messages in different themes: <code>errors</code>, <code>advices</code> or <code>warnings</code>. This is the first level of our map.</p>
+
+<pre><code class="language-scss">$messages: (
+  'errors': ( /* ... */ ),
+  'advices': ( /* ... */ ),
+  'warnings': ( /* ... */ )
+);
+</code></pre>
+
+<p>Then each theme gets mapped to a sub-map (second level) containing keys for different situations. For instance, the <code>error</code> telling that there a missing <code>src</code> attribute on images:</p>
+
+<blockquote>
+  <p>[src] attribute missing or empty. Oh, well…</p>
+</blockquote>
+
+<p>… is arbitrary named <code>no-src</code>.</p>
+
+<pre><code class="language-scss">$messages: (
+  'errors': (
+    'no-src': ( /* ... */ )
+  ),
+  'advices': ( /* ... */ ),
+  'warnings': ( /* ... */ )
+);
+</code></pre>
+
+<p>And finally, this key is mapped to another sub-map (third level) where each key is the language and each value the translation:</p>
+
+<pre><code class="language-scss">$messages: (
+  'errors': (
+    'no-src': (
+      'fr': 'Attribut [src] manquant ou vide. Bon.',
+      'en': '[src] attribute missing or empty. Oh, well…'
+    ),
+    // ...
+  ),
+  'advices': (
+    // ...
+  ),
+  'warnings': (
+    // ...
+  )
+);
+</code></pre>
+
+<p>However fetching <code>fr</code> key from <code>no-src</code> key from <code>errors</code> key from <code>$messages</code> map would look like:</p>
+
+<pre><code class="language-scss">$message: map-get(map-get(map-get($messages, 'errors'), 'no-src'), 'fr')));
+</code></pre>
+
+<p>This is both ugly and a pain in the ass to write. With a <a href="https://github.com/ffoodd/a11y.css/blob/master/sass/utils/_functions.scss#L6-L12"><code>map-deep-get</code></a> function, we could shorten this to:</p>
+
+<pre><code class="language-scss">$message: map-deep-get($messages, 'errors', 'no-src', 'fr');
+</code></pre>
+
+<p>Much better, isn’t it? Although having to type the language over and over is not very convenient. And we could also make sure <code>errors</code> is a valid theme (which is the case) and <code>no-src</code> is a valid key from theme <code>errors</code> (which is also the case). To do all this, we need a little wrapper function. Let’s call it <code>message</code>, in all its simplicity:</p>
+
+<pre><code class="language-scss">/// Retrieve message from series of keys
+/// @access private
+/// @param {String} $theme - Either `advice`, `error` or `warning`
+/// @param {String} $key - Key to find message for
+/// @requires $messages
+/// @return {String} Message
+@function message($theme, $key) {
+  $locale: if(global-variable-exists('language'), $language, 'en');
+
+  @if not index(map-keys($messages), $theme) {
+    @error "Theme `#{$theme}` does not exist.";
+  }
+
+  @if not index(map-keys(map-get($messages, $theme)), $key) {
+    @error "No key `#{$key}` found for theme `#{$theme}`.";
+  }
+
+  @return map-deep-get($messages, $theme, $key, $locale);
+}
+</code></pre>
+
+<p>The <code>message</code> function first deals with the language. If a global variable called <code>language</code> exists — which is the case if <code>set-locale</code> has been called — it uses it, else it falls back to <code>en</code>. Then, it makes sure arguments are valid. Finally, it returns the result of <code>map-deep-get</code> as we’ve seen above.</p>
+
+<p>So we could use it like this:</p>
+
+<pre><code class="language-scss">img:not([src])::after {
+    content: message('errors', 'no-src');
+}
+</code></pre>
+
+<p>Pretty cool! Although having to type <code>content</code> everywhere could be avoided. Plus, Gaël uses <code>!important</code> in order to make sure the messages are correctly being displayed. Let’s have a <code>message</code> mixin wrapping around <code>message</code> function!</p>
+
+<pre><code class="language-scss">/// Get a message from the translation map based on the defined language.
+/// The message contains the icon associated to the message type.
+/// @group languages
+/// @param {String} $theme - Theme name
+/// @param {String} $key - Key name
+/// @require {function} message
+/// @output `content`, with `!important`
+/// @example scss - Get message for `no-src` from `errors` category when language is set to `en`
+/// .selector {
+///   @include message('errors', 'no-src');
+/// }
+/// @example css - Resulting CSS
+/// .selector {
+///   content: '[src] attribute missing or empty. Oh, well…';
+/// }
+@mixin message($theme, $key) {
+  content: message($theme, $key) !important;
+}
+</code></pre>
+
+<p>Same arguments. No logic. Nothing but the <code>content</code> property with <code>!important</code>. Thus we would use it like this:</p>
+
+<pre><code class="language-scss">img:not([src])::after {
+    @include message('errors', 'no-src');
+}
+</code></pre>
+
+<p>We’re done. It’s over!</p>
+
+<h2>Final thoughts</h2>
+
+<p>Cases where we need a translation system in Sass are close to zero, but for a11y.css this work proves to be useful after all. Adding a new language, for instance German, is as easy as adding a <code>de</code> key to all messages in the <code>$messages</code> map, and adding <code>de</code> to <code>$supported-languages</code> within <code>set-locale</code> mixin.</p>
+
+<p>That’s it! Anyway, have a look at <a href="http://ffoodd.github.io/a11y.css">a11y.css</a>, contribute to this awesome project and share the love!</p>
+
+
+	
+		<div id="disqus_thread"></div> 
+	
+
+	</article>
+
+	<aside class="sidebar" role="complementary">
+
+	<div itemscope itemtype="http://schema.org/Person">
+	<h1 class="visually-hidden">About me</h1>
+	<p>Hi! I'm <span itemprop="name">Hugo</span>, a <strong itemprop="jobTitle">front-end developer</strong> from <span itemprop="nationality">France</span>. CSS Goblin, Sass hacker, margin psycho.</p>
+	<p>I am writing for <a href="http://www.sitepoint.com/author/hgiraudel/">SitePoint</a>, <a href="http://tutorials.tutsplus.com/authors/hugo-giraudel">Tuts+</a>, <a href="http://web-design-weekly.com/2014/07/08/sassylists-moving-2-x/">Web Design Weekly</a>, <a href="http://thesassway.com/hugo-giraudel">The Sass Way</a>, <a href="http://tympanus.com/codrops/author/hugogiraudel" itemprop="url">Codrops</a>, <a href="http://css-tricks.com">CSS-tricks</a>, <a href="http://mixture.io/blog/jekyll-mixture/">Mixture</a> and <a href="http://davidwalsh.name">David Walsh' blog</a>.</p>
+	<p>Also I'm maintainer of <a href="http://sassdoc.com">SassDoc</a>, curator of <a href="http://browserhacks.com" itemprop="url" target="blank" title="Browserhacks">Browserhacks</a> and author of a lot of <a href="https://github.com/HugoGiraudel/awesome-sass">Sass stuff</a>.</p>
+	<p>You can catch me on <a href="http://twitter.com/HugoGiraudel" itemprop="url">Twitter</a>, or have a look at my projects on <a href="https://github.com/HugoGiraudel">GitHub</a>.</p>
+</div>
+<div id="carbonads-container">
+	<div class="carbonad">
+		<div id="azcarbon"></div>
+	</div>
+</div>
+</aside>
+	<footer class="footer" role="contentinfo">
+    <ul class="footer__nav">
+        <li><a href="https://plus.google.com/u/0/101697878480386449961?rel=author" target="blank">Google+</a></li>
+        <li><a href="https://github.com/HugoGiraudel" target="blank">GitHub</a></li>
+        <li><a href="/resume">Resume</a></li>
+        <li><a href="/rss">RSS</a></li>
+        <li><a href="http://twitter.com/HugoGiraudel" target="blank">Twitter</a></li>
+    </ul>
+    <p>&copy;&nbsp;2014 Hugo Giraudel. Built with <a href="http://mixture.io/">Mixture</a>. Hosted on <a href="https://github.com/HugoGiraudel/hugogiraudel.github.com">GitHub</a>.</p>
+</footer>
+</div>
+
+<script src="/assets/js/main.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var app = new App({
+    codepen: false,
+    sassmeister: true,
+    tableOfContent: false,
+    comments: true,
+    layout: 'article',
+    disqus: {
+      title: "Translation system in Sass",
+      url: window.location.href,
+      name: 'hugogiraudel'
+    },
+    tracking: true,
+    ad: true
+  });
+});
+</script>
+</body>
+</html>
